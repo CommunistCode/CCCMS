@@ -1,0 +1,163 @@
+/* CSS Document */
+
+body {
+	margin: 0px;
+	font-family: Helvetica, Lucida Grande, sans-serif;
+	background : WHITE;
+}
+
+p {
+	margin: 0px;
+	padding: 0px 20px 0px 0px;
+}
+
+input, textarea {
+	border: solid 1px black;
+	padding: 4px;
+	font-size: 11px;
+}
+
+#mainContainer {
+	padding-top: 10px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	width: 930px;
+	background: GREEN;
+	border-left: solid 1px grey;
+	border-right: solid 1px grey;
+}
+
+#title {
+	padding: 0px 10px 0px 0px;
+	line-height: 200%;
+	height: 110px;
+	width:920px;
+	text-align: center;
+	color: green;
+	background: yellow;
+	overflow: hidden;
+	font-size: small;
+}
+
+#smallLogin {
+	float:right;
+}
+
+.links {
+	padding: 0px 0px 0px 0px;
+	height: 40px;
+	background: silver;
+}
+
+.links a {
+	display: inline-block;
+	text-align: center;
+	font-size: 12px;
+	text-decoration: none;
+	color: black;
+	margin: 0px;
+	padding: 13px 0px 0px 0px;
+	font-weight: bold;
+	width: 100px;
+	height: 27px;
+	background: blue;
+}
+
+.links a:hover {
+}
+
+#bodyTop {
+	position: relative;
+	color: white;
+	height: 50px;
+	margin: 20px 0px 0px 0px;
+	background: red;
+}
+
+#body {
+	position: relative;
+	color: #212121;
+	margin: 20px 0px 0px 0px;
+	padding: 10px 10px 10px 10px;
+	text-align: justify;
+	clear: both;
+	line-height:140%;
+	font-size: small;
+	background : WHITE;
+	overflow: auto;
+}
+
+#footer {
+	position: relative;
+	height: 14px;
+	width: 930px;
+	margin 0px 0px 0px 0px;
+	padding: 4px 0px 2px 0px;
+	color: white;
+	background: grey;
+	font-size: x-small;
+	font-weight: bold;
+	text-align: right;
+	clear: both;
+}
+
+#mainShopInfo {
+	float: right;
+	width: 620px;
+	height: 200px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	padding: 10px;
+	border: 1px solid grey;
+	text-align: center;
+}
+
+hr.mainShopInfo {
+	width: 80%;
+}
+
+p.mainShopInfoTop {
+	margin: 4px 4px 10px 4px;
+	color: #787777;
+	line-height: 150%;
+}
+
+p.mainShopInfoBottom {
+	margin: 15px 10px 10px 10px;
+	color: #575555;
+	font-weight: bold;
+}
+
+img {
+	border: 1px solid black;
+}
+
+img.mainShopImage {
+	float: left;
+	height: 220px;
+	margin-top: 20px;
+	border: 1px solid black;
+}
+
+img.imageLeft {
+	float:left;
+	margin-right: 20px;
+	margin-bottom: 5px;
+	display:block;
+}
+
+img.imageRight {
+	float:right;
+	margin-left: 20px;
+	margin-bottom: 5px;
+	display:block;
+}
+
+img.imageCentre {
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 20px;
+	display:block;
+}
