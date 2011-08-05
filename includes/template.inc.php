@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-		<title><?php echo("CCCMS : ".$pageContent['title']); ?></title>
+		<title><?php echo($title." : ".$pageContent['title']); ?></title>
 		<link href="stylesheet/stylesheet.css" rel="stylesheet" type="text/css" />
 	</head>
 	<body>
