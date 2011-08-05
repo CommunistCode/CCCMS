@@ -16,7 +16,6 @@
 
 	}
 
-	$pageResult=$pageTools->getDynamicContent($page);
-	$pageContent=$pageResult->fetch_assoc();
+	$pageContent=$pageTools->getDynamicContent($page);
 
 ?>

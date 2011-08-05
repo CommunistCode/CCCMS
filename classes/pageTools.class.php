@@ -3,7 +3,7 @@
 require_once($fullPath."/classes/dbConn.class.php");
 
 class pageTools {
-	
+
 	public function getStartingPage() {
 
 		$db = new dbConn();
@@ -22,7 +22,7 @@ class pageTools {
 		
 		$result = $db->selectWhere("title,text,linkName,specialInclude","dContent","dContentID='".$pageID."'",0);
 		
-		return $result;
+		return $result->fetch_assoc();
 		
 	}
 	

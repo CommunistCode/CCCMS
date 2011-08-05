@@ -1,53 +1,11 @@
-<?php 
-	
-	require_once("config/config.php");
-	require_once("includes/global.inc.php");
+<?php
 
-	$pageTools = new pageTools();
+	require_once("config/config.php");
+	require_once($fullPath."/classes/pageTools.class.php");
+	require_once($fullPath."/includes/global.inc.php");
+
+	$content = $pageTools->matchTags($pageContent['text']);
+
+	require_once("includes/template.inc.php");
 
 ?>
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-		<title><?php echo("CCCMS : ".$pageContent['title']); ?></title>
-		<link href="stylesheet/stylesheet.css" rel="stylesheet" type="text/css" />
-	</head>
-	<body>
-		<div id="mainContainer">
-			<div id="title">
-				<?php 
-					require_once("includes/title.inc.php"); 
-				?>
-			</div>
-			<div class='links'>
-				<?php 
-					require_once("includes/links.inc.php"); 
-				?>
-			</div>
-			<div id="bodyTop">
-			
-			</div>
-			<?php
-				if ($pageContent['specialInclude'] != NULL) {
-					require_once('includes/'.$pageContent['specialInclude']);
-				}
-			?>
-			<div id="body">
-				<?php		
-					echo($pageTools->matchTags($pageContent['text']));
-				?>
-			</div>
-			<div id="footer">
-				<?php 
-					require_once("includes/footer.inc.php"); 
-				?>
-			</div>
-		</div>
-	</body>
-</html>
-
-
-
