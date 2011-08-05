@@ -14,4 +14,6 @@
 	$GLOBALS['DB_PASS'] = "cccms";
 	$GLOBALS['DB_NAME'] = "CCCDEV";
 
+	$title = "CCCMS";
+	
 ?>
