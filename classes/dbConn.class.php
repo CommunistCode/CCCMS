@@ -120,9 +120,7 @@ class dbConn {
 
 		$query = "SELECT * FROM	".$table." WHERE ".$column." = '".$value."'";
 
-		$result = $this->mysqli->query($query);
-
-		if ($result->num_rows != 0) {
+		if($result = $this->mysqli->query($query)) {
 
 			return true;
 
