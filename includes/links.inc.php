@@ -5,6 +5,12 @@
 	while($row = $result->fetch_assoc()) {
 	
 		if (!$row['linkOrder'] == 0) {
+		
+			if (!isset($page)) {
+
+				$page = $_GET['page'];
+
+			}
 
 			if ($row['directLink'] == "") {
 
@@ -14,7 +20,7 @@
 
 			else {
 
-				echo("<a href='".$directoryPath."/".$row['directLink']."'>".$row['linkName']."</a>\n");
+				echo("<a href='".$directoryPath."/".$row['directLink']."?page=".$row['dContentID']."'>".$row['linkName']."</a>\n");
 
 			}
 		}
