@@ -133,6 +133,12 @@ class dbConn {
 		}
 
 	}
+
+	function updateVersion($module, $version) {
+
+		$this->update("version","version='".$version."'","module='".$module."'",0);
+
+	}
 	
 }
 
