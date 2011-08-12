@@ -17,6 +17,10 @@ input, textarea {
 	font-size: 11px;
 }
 
+.tableHeader {
+	background: grey;
+}
+
 #mainContainer {
 	padding-top: 10px;
 	margin-left: auto;
