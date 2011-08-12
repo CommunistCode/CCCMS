@@ -37,8 +37,7 @@
 		
 		$pageTools = new pageTools();
 		
-		$result = $pageTools->getDynamicContent($_POST['pageSelection']);
-		$content = $result->fetch_assoc();
+		$content = $pageTools->getDynamicContent($_POST['pageSelection']);
 		
 		require_once("includes/showTags.inc.php");
 		
