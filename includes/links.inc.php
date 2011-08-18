@@ -12,6 +12,13 @@
 
 			}
 
+			if ($page == $row['dContentID']) {
+				echo("<div class='navBarLinkSelected'>");
+			} 
+			else {
+				echo("<div class='navBarLink'>");
+			}
+			
 			if ($row['directLink'] == "") {
 
 				echo("<a href='".$directoryPath."/index.php?page=".$row['dContentID']."'>".$row['linkName']."</a>\n");
@@ -23,6 +30,9 @@
 				echo("<a href='".$directoryPath."/".$row['directLink']."?page=".$row['dContentID']."'>".$row['linkName']."</a>\n");
 
 			}
+
+			echo("</div>");
+
 		}
 	}
 
