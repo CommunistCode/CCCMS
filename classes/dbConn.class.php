@@ -120,7 +120,7 @@ class dbConn {
 
 		$query = "SELECT * FROM	".$table." WHERE ".$column." = '".$value."'";
 
-		$result = $this->mysqli->query($query)
+		$result = $this->mysqli->query($query);
 		
 		if($result->num_rows) {
 
@@ -140,6 +140,14 @@ class dbConn {
 
 		$this->update("version","version='".$version."'","module='".$module."'",0);
 
+	}
+
+	function checkVersion($module, $newVersion) {
+
+		/********************************************
+			CHECK VERSION STUB
+			*****************************************/
+	
 	}
 	
 }
