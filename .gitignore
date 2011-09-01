@@ -5,3 +5,5 @@ blog/
 config/config.php
 themes/*
 !default
+themes/default/*
+!base
