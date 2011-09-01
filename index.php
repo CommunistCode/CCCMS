@@ -6,6 +6,6 @@
 
 	$content = $pageTools->matchTags($pageContent['text']);
 
-	require_once($fullPath."/themes/default/base/templates/corePage.inc.php");
+	require_once($fullPath."/themes/default/templates/corePage.inc.php");
 
 ?>
