@@ -3,5 +3,5 @@ membership/
 auction/
 blog/
 config/config.php
-themes/
-!themes/default
+themes/*
+!default
