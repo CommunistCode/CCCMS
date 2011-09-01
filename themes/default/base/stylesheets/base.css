@@ -1,9 +1,14 @@
 /* CSS Document */
 
+html {
+	height: 100%;
+	background : #EDEDED;
+}
+
 body {
 	margin: 0px;
 	font-family: Helvetica, Lucida Grande, sans-serif;
-	background : WHITE;
+	height: 100%;
 }
 
 p {
@@ -39,6 +44,7 @@ h1 {
 #bodyContainer {
 	float: left;
 	width: 930px;
+	background: white;
   border-right: 1px solid grey;
   border-left: 1px solid grey;
 }
@@ -82,7 +88,9 @@ h1 {
 	padding: 20px 20px 20px 20px;
 	margin: 0px auto 0px auto;
 	width: 930px;
+	min-height: 100%;
 	background: white;
+	border-left: 1px solid black;
 }
 
 #title {
