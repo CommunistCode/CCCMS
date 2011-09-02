@@ -94,6 +94,8 @@ class pageTools {
 		$patterns[5] = "/\[img_center size\=(.*)\](.*)\[\/img\]/i"; //ImgCentre
 		$patterns[6] = "/\[colour\=(.*)\](.*)\[\/colour\]/is"; //Link
 		$patterns[7] = "/\[header\](.*?)\[\/header\]/is";	
+		$patterns[8] = "/\[big_header\](.*?)\[\/big_header\]/is";	
+		$patterns[9] = "/\[small_header\](.*?)\[\/small_header\]/is";	
 	
 		$replacements[0] = "<strong>$1</strong>";
 		$replacements[1] = "<em>$1</em>";
@@ -103,6 +105,8 @@ class pageTools {
 		$replacements[5] = "<img class='imageCentre' style='width:$1px;' src='userImages/$2' />";
 		$replacements[6] = "<span style=\"color:$1;\">$2</span>";
 		$replacements[7] = "<h2>$1</h2>";
+		$replacements[8] = "<h1>$1</h1>";
+		$replacements[9] = "<h3>$1</h3>";
 		
 		$result=nl2br(preg_replace($patterns,$replacements,$text), true);
 		
