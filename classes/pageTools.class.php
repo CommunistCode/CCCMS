@@ -4,6 +4,18 @@ require_once($fullPath."/classes/dbConn.class.php");
 
 class pageTools {
 
+	public function getPageIDbyDirectLink($link) {
+
+		$db = new dbConn();
+
+		$result = $db->selectWhere("dContentID","dContent","directLink='".$link."'");
+
+		$data = $result->fetch_assoc();
+
+		return $data['dContentID'];
+
+	}
+	
 	public function getTheme($module) {
 
 		$db = new dbConn();
