@@ -151,7 +151,7 @@ class adminTools {
 		
 		$db = new dbConn();
 
-		$text = addslashes($text);	
+		$text = addslashes(htmlentities($text));	
 
 		if ($db->update("dContent","title='".$title."', text='".$text."', linkName='".$linkName."'","dContentID='".$id."'",0)) {
 			
