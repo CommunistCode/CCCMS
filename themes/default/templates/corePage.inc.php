@@ -10,12 +10,12 @@
 		<div id="mainContainer">
 			<div id="title">
 				<?php 
-					require_once("includes/title.inc.php"); 
+					require_once($fullPath."/themes/default/templates/title.inc.php"); 
 				?>
 			</div>
 			<div id='navBar'>
 				<?php 
-					require_once("includes/links.inc.php"); 
+					require_once($fullPath."/themes/default/templates/links.inc.php"); 
 				?>
 			</div>
 			<div id="body">
@@ -26,7 +26,7 @@
 		</div>
 		<div id="footer">
 				<?php 
-					require_once("includes/footer.inc.php"); 
+					require_once($fullPath."/themes/default/templates/footer.inc.php"); 
 				?>
 		</div>
 	</body>
