@@ -4,6 +4,18 @@ require_once($fullPath."/classes/dbConn.class.php");
 
 class pageTools {
 
+	public function getTheme($module) {
+
+		$db = new dbConn();
+
+		$result = $db->selectWhere("theme","version","module='".$module."'");
+
+		$data = $result->fetch_assoc();
+
+		return $data['theme'];
+
+	}
+	
 	public function getStartingPage() {
 
 		$db = new dbConn();

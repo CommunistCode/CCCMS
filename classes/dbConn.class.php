@@ -32,7 +32,7 @@ class dbConn {
 		
 	}
 	
-	function selectWhere($fields, $from, $where, $debug) {
+	function selectWhere($fields, $from, $where, $debug=0) {
 		
 		$query = "SELECT " . $fields . " FROM " . $from . " WHERE " . $where;
 		$result = $this->mysqli->query($query);
