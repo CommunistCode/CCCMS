@@ -17,7 +17,8 @@ class initialCreateContent {
 
 			CREATE TABLE version (
 					module text,
-					version text
+					version text,
+					theme text
 			); ";
 
 		if ($db->mysqli->query($query)) {
@@ -100,7 +101,8 @@ class initialCreateContent {
 					version
 				) values (
 					'base',
-					'1.0.0'
+					'1.0.0',
+					'default'
 				); ";
 
 			if ($db->mysqli->query($query)) {
