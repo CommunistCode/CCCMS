@@ -62,7 +62,7 @@ class dbConn {
 
 	}
 
-	function insert($into, $fields, $values, $debug) {
+	function insert($into, $fields, $values, $debug=0) {
 		
 		$query = "INSERT INTO " . $into . "(" . $fields . ") VALUES(" . $values . ")";
 		
@@ -83,7 +83,7 @@ class dbConn {
 		
 	}
 	
-	function update($table, $values, $where, $debug) {
+	function update($table, $values, $where, $debug=0) {
 		
 		$query = "UPDATE " . $table . " SET " . $values . " WHERE " . $where;
 

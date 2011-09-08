@@ -60,6 +60,8 @@ class initialCreateAdmin {
 
 		$db = new dbConn();
 		
+		$db->insert("version","module,version,theme","'base','1.0.0','default'");
+		
 		$query = "SELECT * FROM adminContent WHERE name = 'Manage Pages'";
 
 		$result = $db->mysqli->query($query);

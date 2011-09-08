@@ -4,18 +4,18 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title><?php echo($title." : ".$pageContent['title']); ?></title>
-		<link href="themes/default/stylesheets/base.css" rel="stylesheet" type="text/css" />
+		<link href="themes/<?php echo($pageTools->getTheme("base")); ?>/stylesheets/base.css" rel="stylesheet" type="text/css" />
 	</head>
 	<body>
 		<div id="mainContainer">
 			<div id="title">
 				<?php 
-					require_once($fullPath."/themes/default/templates/title.inc.php"); 
+					require_once($fullPath."/themes/".$pageTools->getTheme("base")."/templates/title.inc.php"); 
 				?>
 			</div>
 			<div id='navBar'>
 				<?php 
-					require_once($fullPath."/themes/default/templates/links.inc.php"); 
+					require_once($fullPath."/themes/".$pageTools->getTheme("base")."/templates/links.inc.php"); 
 				?>
 			</div>
 			<div id="body">
@@ -26,7 +26,7 @@
 		</div>
 		<div id="footer">
 				<?php 
-					require_once($fullPath."/themes/default/templates/footer.inc.php"); 
+					require_once($fullPath."/themes/".$pageTools->getTheme("base")."/templates/footer.inc.php"); 
 				?>
 		</div>
 	</body>
