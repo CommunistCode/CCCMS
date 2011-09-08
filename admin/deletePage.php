@@ -38,8 +38,7 @@
 				else if (isset($_POST['pageSelection'])) {
 					
 					$pageTools = new pageTools();
-					$result=$pageTools->getDynamicContent($_POST['pageSelection']);
-					$pageArray = $result->fetch_assoc();
+					$pageArray=$pageTools->getDynamicContent($_POST['pageSelection']);
 					
 					echo("Are you sure you wish to delete ".$pageArray['linkName']."\n");
 					echo("<br /><br /><a href='deletePage.php?confirmDelete=1&pageID=".$_POST['pageSelection']."'>Yes I am sure!</a>");
