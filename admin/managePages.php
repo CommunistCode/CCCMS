@@ -51,12 +51,6 @@
 			</div>
 			<div id="links">
 				<?php 
-					//Sublinks
-					//1 = ManagePages
-					//2 = ManageSite
-					//3 = ManageAdmin
-
-					$page=1;
 					require_once("includes/adminLinks.inc.php"); 
 				?>
 			</div>
