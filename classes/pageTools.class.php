@@ -34,7 +34,14 @@ class pageTools {
 
 		$mysqlResult = $this->getPageLinks();
 
-		$result = $mysqlResult->fetch_assoc();
+		$linkOrder = 0;
+
+		do {
+
+			$result = $mysqlResult->fetch_assoc();
+			$linkOrder = $result['linkOrder']; 
+
+		}	 while ($linkOrder == 0); 
 
 		return $result['dContentID'];
 
