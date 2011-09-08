@@ -142,12 +142,46 @@ class dbConn {
 
 	}
 
-	function checkVersion($module, $newVersion) {
+	function isVersionGreater($module, $newVersion) {
 
-		/********************************************
-			CHECK VERSION STUB
-			*****************************************/
-	
+		if ($version = $this->getVersion($module)) {
+			
+			$splitVersion = explode(".",$version);
+			$splitNewVersion = explode(".",$newVersion);
+
+			if ($splitVersion[0] < $splitNewVersion[0]) {
+
+				return true;
+
+			} else if ($splitVersion[0] == $splitNewVersion[0]) {
+
+				if ($splitVersion[1] < $splitNewVersion[1]) {
+
+					return true;
+
+				} else if ($splitVersion[1] == $splitNewVersion[1]) {
+
+					if ($splitVersion[2] < $splitNewVersion[2]) {
+
+						return true;
+
+					}
+				}
+			}
+		}
+
+		return false;
+
+	}
+
+	function getVersion($module) {
+
+		$result = $this->selectWhere("version","version","module='".$module."'");
+
+		$data = $result->fetch_assoc();
+
+		return $data['version'];
+
 	}
 	
 }
