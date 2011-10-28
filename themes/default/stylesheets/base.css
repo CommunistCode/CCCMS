@@ -39,6 +39,13 @@ h1 {
 	width: 99%;
 }
 
+.help {
+	margin: 0px 20px 20px 20px;
+	background: #EDEDED;
+	padding: 10px;
+	border: 1px solid black;
+}
+
 .tableHeader td {
 	border-bottom: solid 1px #bfa567;
 	padding: 3px 0px 3px 0px;
