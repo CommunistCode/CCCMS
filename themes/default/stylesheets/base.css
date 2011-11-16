@@ -10,14 +10,14 @@ html {
 body {
 	margin: 0px;
 	padding: 0px;
-	font-family: Helvetica, Lucida Grande, sans-serif;
+	font-family: 'Open Sans', sans-serif;
 	height: 100%;
 }
 
 p {
 	margin: 0px;
 	padding: 0px 20px 0px 0px;
-	font-size: 14px;
+	font-size: 13px;
 	text-align: justify;
 	line-height:150%;
 	color: #4A4A4A;
@@ -31,6 +31,7 @@ input, textarea {
 
 a {
 	color: black;
+	font-size: 13px;
 }
 
 h1 {
@@ -100,9 +101,13 @@ h1 {
 	height: 30px;
 }
 
+#navBar a {
+	font-size: 12px;
+}
+
 .navBarLink {
 	float: left;
-	padding: 8px 0px 0px 30px;
+	padding: 7px 0px 0px 30px;
 	text-align: center;
 	background: #bfa567;
 	margin: 0px 0px 0px 0px;
@@ -110,7 +115,7 @@ h1 {
 
 .navBarLinkSelected {
 	float: left;
-	padding: 8px 0px 0px 30px;
+	padding: 7px 0px 0px 30px;
 	text-align: center;
 	background: #bfa567;
 	margin: 0px 0px 0px 0px;

@@ -93,31 +93,37 @@ class pageTools {
 		$patterns = array();
 		$replacements = array();
 		
-		$patterns[0] = "/\[b\](.*?)\[\/b\]/is";  //Bold
-		$patterns[1] = "/\[i\](.*?)\[\/i\]/is"; //Italics
-		$patterns[2] = "/\[url\=(.*)\](.*)\[\/url\]/i"; //Link
-		$patterns[3] = "/\[img_left size\=(.*)\](.*)\[\/img\]/i"; //ImgLeft
-		$patterns[4] = "/\[img_right size\=(.*)\](.*)\[\/img\]/i"; //ImgRight
-		$patterns[5] = "/\[img_center size\=(.*)\](.*)\[\/img\]/i"; //ImgCentre
-		$patterns[6] = "/\[colour\=(.*)\](.*)\[\/colour\]/is"; //Link
-		$patterns[7] = "/\[header\](.*?)\[\/header\]/is";	
-		$patterns[8] = "/\[big_header\](.*?)\[\/big_header\]/is";	
-		$patterns[9] = "/\[small_header\](.*?)\[\/small_header\]/is";	
+//		$patterns[0] = "/\r\n/";
+		$patterns[1] = "/\[b\](.*?)\[\/b\]/is";  //Bold
+		$patterns[2] = "/\[i\](.*?)\[\/i\]/is"; //Italics
+		$patterns[3] = "/\[url\=(.*)\](.*)\[\/url\]/i"; //Link
+		$patterns[4] = "/\[img_left size\=(.*)\](.*)\[\/img\]/i"; //ImgLeft
+		$patterns[5] = "/\[img_right size\=(.*)\](.*)\[\/img\]/i"; //ImgRight
+		$patterns[6] = "/\[img_center size\=(.*)\](.*)\[\/img\]/i"; //ImgCentre
+		$patterns[7] = "/\[colour\=(.*)\](.*)\[\/colour\]/is"; //Link
+		$patterns[8] = "/\[header\](.*?)\[\/header\]/is"; //Heading	
+		$patterns[9] = "/\[big_header\](.*?)\[\/big_header\]/is";	//Big heading
+		$patterns[10] = "/\[small_header\](.*?)\[\/small_header\]/is";	//Small heading
 	
-		$replacements[0] = "<strong>$1</strong>";
-		$replacements[1] = "<em>$1</em>";
-		$replacements[2] = "<a href=\"$1\">$2</a>";
-		$replacements[3] = "<img class='imageLeft' style='width:$1px;' src='userImages/$2' />";
-		$replacements[4] = "<img class='imageRight' style='width:$1px;' src='userImages/$2' />";
-		$replacements[5] = "<img class='imageCentre' style='width:$1px;' src='userImages/$2' />";
-		$replacements[6] = "<span style=\"color:$1;\">$2</span>";
-		$replacements[7] = "<h2>$1</h2>";
-		$replacements[8] = "<h1>$1</h1>";
-		$replacements[9] = "<h3>$1</h3>";
+//		$replacements[0] = "<p>$1</p>";
+		$replacements[1] = "<strong>$1</strong>";
+		$replacements[2] = "<em>$1</em>";
+		$replacements[3] = "<a href=\"$1\">$2</a>";
+		$replacements[4] = "<img class='imageLeft' style='width:$1px;' src='userImages/$2' />";
+		$replacements[5] = "<img class='imageRight' style='width:$1px;' src='userImages/$2' />";
+		$replacements[6] = "<img class='imageCentre' style='width:$1px;' src='userImages/$2' />";
+		$replacements[7] = "<span style=\"color:$1;\">$2</span>";
+		$replacements[8] = "<h2>$1</h2>";
+		$replacements[9] = "<h1>$1</h1>";
+		$replacements[10] = "<h3>$1</h3>";
 		
-		$result=nl2br(preg_replace($patterns,$replacements,$text), true);
-		
-		
+		$result=preg_replace($patterns,$replacements,$text);
+
+		$prep0 = str_replace(array("\r\n" , "\n\r") , "\n" , $result);
+		$prep1 = str_replace("\r" , "\n" , $prep0);
+		$prep2 = preg_replace(array('/\n\s+/' , '/\s+\n/') , "\n" , trim($prep1));
+		$result = '<p>'.str_replace("\n", "</p>\n<p>", $prep2).'</p>'; 
+
 		return $result;
 
 	}
