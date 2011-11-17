@@ -16,7 +16,7 @@ class dbConn {
 				
 	}
 
-	function select($fields, $from, $debug) {
+	function select($fields, $from, $debug = 0) {
 		
 		$query = "SELECT " . $fields . " FROM " . $from;
 		$result = $this->mysqli->query($query);
