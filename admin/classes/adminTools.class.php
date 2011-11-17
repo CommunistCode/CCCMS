@@ -295,7 +295,7 @@ class adminTools {
 	
 	public function deleteImage($image) {
 		
-		if (unlink('/srv/http/hiawatha/'.$GLOBALS['rootPath'].'/userImages/'.$image)) {
+		if (unlink($GLOBALS['fullPath'].'/userImages/'.$image)) {
 			return "<p style='color:green;'>Image Deleted!</p>";
 		}
 		else {
