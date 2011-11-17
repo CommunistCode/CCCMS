@@ -93,7 +93,6 @@ class pageTools {
 		$patterns = array();
 		$replacements = array();
 		
-//		$patterns[0] = "/\r\n/";
 		$patterns[1] = "/\[b\](.*?)\[\/b\]/is";  //Bold
 		$patterns[2] = "/\[i\](.*?)\[\/i\]/is"; //Italics
 		$patterns[3] = "/\[url\=(.*)\](.*)\[\/url\]/i"; //Link
@@ -104,8 +103,7 @@ class pageTools {
 		$patterns[8] = "/\[header\](.*?)\[\/header\]/is"; //Heading	
 		$patterns[9] = "/\[big_header\](.*?)\[\/big_header\]/is";	//Big heading
 		$patterns[10] = "/\[small_header\](.*?)\[\/small_header\]/is";	//Small heading
-	
-//		$replacements[0] = "<p>$1</p>";
+		
 		$replacements[1] = "<strong>$1</strong>";
 		$replacements[2] = "<em>$1</em>";
 		$replacements[3] = "<a href=\"$1\">$2</a>";
@@ -116,13 +114,8 @@ class pageTools {
 		$replacements[8] = "<h2>$1</h2>";
 		$replacements[9] = "<h1>$1</h1>";
 		$replacements[10] = "<h3>$1</h3>";
-		
-		$result=preg_replace($patterns,$replacements,$text);
-
-		$prep0 = str_replace(array("\r\n" , "\n\r") , "\n" , $result);
-		$prep1 = str_replace("\r" , "\n" , $prep0);
-		$prep2 = preg_replace(array('/\n\s+/' , '/\s+\n/') , "\n" , trim($prep1));
-		$result = '<p>'.str_replace("\n", "</p>\n<p>", $prep2).'</p>'; 
+	
+		$result=nl2br(preg_replace($patterns,$replacements,$text));
 
 		return $result;
 
