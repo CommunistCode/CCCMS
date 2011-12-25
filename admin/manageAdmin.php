@@ -22,19 +22,19 @@
 					Manage Admin
 				</h1>	
 				<h2>
-					Create Admin
+					<a href='createAdmin.php'>Create Admin</a>
 				</h2>
 				<p>
 					Create a new set of login credentials to allow more administrators of the site.
 				</p>
 				<h2>
-					Delete Admin
+					<a href='deleteAdmin.php'>Delete Admin</a>
 				</h2>
 				<p>
 					Deletes a set of login credentials to disable access to the admin area.
 				</p>
 				<h2>
-					Change Password
+					<a href='changePassword.php'>Change Password</a>
 				</h2>
 				<p>
 					Change the password of the currently logged in admin.
