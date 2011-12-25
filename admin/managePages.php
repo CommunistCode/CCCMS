@@ -25,25 +25,25 @@
 					Manage Pages
 				</h1>
 				<h2>
-					Create
+					<a href='createPage.php'>Create</a>
 				</h2>
 				<p>
 					Create a new page for the site.
 				</p>
 				<h2>
-					Update
+					<a href='updatePage.php'>Update</a>
 				</h2>
 				<p>
 					Update one of the existing pages of the site.
 				</p>
 				<h2>
-					Delete
+					<a href='deletePage.php'>Delete</a>
 				</h2>
 				<p>
 					Delete a page.
 				</p>
 				<h2>
-					Global
+					<a href='globalUpdates.php'>Global</a>
 				</h2>
 				<p>
 					Update information across all pages for example the footer.
