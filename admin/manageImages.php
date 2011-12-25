@@ -25,13 +25,13 @@
 					Manage Images
 				</h1>
 				<h2>
-					Upload
+					<a href='uploadImage.php'>Upload</a>
 				</h2>
 				<p>
 					Upload new images to use on the site.
 				</p>
 				<h2>
-					Delete
+					<a href='deleteImage.php'>Delete</a>
 				</h2>
 				<p>
 					Remove images that are no longer needed to free up space.
