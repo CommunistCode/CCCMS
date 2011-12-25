@@ -24,7 +24,7 @@
 				<h1>Delete Page</h1>
 				<?php
 
-				if ($_GET['confirmDelete']==1) {
+				if (isset($_GET['confirmDelete']) && $_GET['confirmDelete']==1) {
 					
 					if ($adminTools->deletePage($_GET['pageID'])) {
 						echo("<p>Page deleted.</p>");
