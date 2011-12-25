@@ -25,7 +25,7 @@
 					Manage Layout 
 				</h1>
 				<h2>
-					Link Order
+					<a href='manageLinks.php'>Link Order</a>
 				</h2>
 				<p>
 					Alter the order of links on the navigation bar. 
