@@ -10,7 +10,15 @@ class versionTools {
 
 		$db = new dbConn();
 
-		$db->update("version","version='".$version."'","module='".$module."'",0);
+		if ($db->update("version","version='".$version."'","module='".$module."'",0)) {
+
+      return 1;
+
+    } else {
+
+      return 0;
+
+    }
 
 	}
 
