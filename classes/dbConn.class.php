@@ -138,7 +138,11 @@ class dbConn {
 
 	function updateVersion($module, $version) {
 
-		$this->update("version","version='".$version."'","module='".$module."'",0);
+		if ($this->update("version","version='".$version."'","module='".$module."'",0)) {
+
+      return 1;
+
+     }
 
 	}
 
