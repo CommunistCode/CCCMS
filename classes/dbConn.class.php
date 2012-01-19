@@ -31,7 +31,7 @@ class dbConn {
 		return $result;
 		
 	}
-	
+
 	function selectWhere($fields, $from, $where, $debug=0) {
 		
 		$query = "SELECT " . $fields . " FROM " . $from . " WHERE " . $where;
@@ -102,10 +102,16 @@ class dbConn {
 		
 	}
 	
-	function delete($from, $where) {
+	function delete($from, $where, $debug=0) {
 		
 		$query = "DELETE FROM " . $from . " WHERE " . $where;
-		
+	
+    if ($debug == 1) {
+
+      echo($query);
+
+    }
+
 		if($this->mysqli->query($query)) {
 			
 			return true;
