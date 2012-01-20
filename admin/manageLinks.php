@@ -55,11 +55,11 @@
 					echo("<td width='200'>New Order</td>");
 					echo("</tr>");
 
-					$numLinks = $result->num_rows;
+					$numLinks = count($result);
 
 					echo("<form method='post' action='manageLinks.php'>");
 
-					while($row = $result->fetch_assoc()) {
+          foreach($result as $row) {
 
 						echo("<tr>");
 						echo("<td>" . $row['linkName'] . "</td>");
