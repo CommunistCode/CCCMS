@@ -1,72 +1,83 @@
 <?php
 
-//Manage versioning and eventually updating 
+  //Manage versioning and eventually updating 
 
-require_once($fullPath."/config/config.php");
+  require_once($fullPath."/classes/pdoConn.class.php");
 
-class versionTools {
-	
-	function updateVersion($module, $version) {
+  class versionTools {
 
-		$db = new dbConn();
+    private $pdoConn;
 
-		if ($db->update("version","version='".$version."'","module='".$module."'",0)) {
+    function __construct() {
 
-      return 1;
-
-    } else {
-
-      return 0;
+      $this->pdoConn = new pdoConn(); 
 
     }
 
-	}
+	  function updateVersion($module, $version) {
 
-	function isVersionGreater($module, $newVersion) {
+		  $db = new dbConn();
 
-		if ($version = $this->getVersion($module)) {
+  		if ($db->update("version","version='".$version."'","module='".$module."'",0)) {
+
+        return 1;
+
+      } else {
+
+        return 0;
+
+      }
+
+  	}
+
+	  function isVersionGreater($module, $newVersion) {
+
+		  if ($version = $this->getVersion($module)) {
 			
-			$splitVersion = explode(".",$version);
-			$splitNewVersion = explode(".",$newVersion);
+			  $splitVersion = explode(".",$version);
+  			$splitNewVersion = explode(".",$newVersion);
 
-			if ($splitVersion[0] < $splitNewVersion[0]) {
+	  		if ($splitVersion[0] < $splitNewVersion[0]) {
 
-				return true;
+		  		return true;
 
-			} else if ($splitVersion[0] == $splitNewVersion[0]) {
+  			} else if ($splitVersion[0] == $splitNewVersion[0]) {
 
-				if ($splitVersion[1] < $splitNewVersion[1]) {
+	  			if ($splitVersion[1] < $splitNewVersion[1]) {
 
-					return true;
+		  			return true;
 
-				} else if ($splitVersion[1] == $splitNewVersion[1]) {
+			  	} else if ($splitVersion[1] == $splitNewVersion[1]) {
 
-					if ($splitVersion[2] < $splitNewVersion[2]) {
+				  	if ($splitVersion[2] < $splitNewVersion[2]) {
 
-						return true;
+					  	return true;
 
-					}
-				}
-			}
-		}
+  					}
+	  			}
+		  	}
+  		}
 
-		return false;
+	  	return false;
 
-	}
+  	}
 
-	function getVersion($module) {
+	  function getVersion($module) {
 
-		$db = new dbConn();
+      $field = "version";
+      $table = "version";
 
-		$result = $db->selectWhere("version","version","module='".$module."'");
+      $where[0]['column'] = "module";
+      $where[0]['operator'] = "=";
+      $where[0]['value'] = $module;
 
-		$data = $result->fetch_assoc();
+	  	$result = $this->pdoConn->select($field,$table,$where);
+      
+      return $result[0]['version'];
 
-		return $data['version'];
-
-	}
+	  }
 	
-}
+  }
 
 ?>
 	
