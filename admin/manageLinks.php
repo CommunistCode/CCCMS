@@ -11,8 +11,8 @@
 	if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 		$result = $pageTools->getPageLinks();
-		
-		while ($row = $result->fetch_assoc()) {
+	
+    foreach ($result as $row) {
 
 			$adminTools->updateLinkOrder($row['dContentID'], $_POST['link'.$row['dContentID']]);
 		}
