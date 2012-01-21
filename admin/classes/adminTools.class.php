@@ -1,9 +1,18 @@
 <?php
 
-require_once($fullPath.'/admin/classes/admin.class.php');
+  require_once($fullPath.'/admin/classes/admin.class.php');
+  require_once($fullPath.'/classes/pdoConn.class.php');
 
-class adminTools {
-	
+  class adminTools {
+
+    private $pdoConn;
+
+    function __construct() {
+
+      $this->pdoConn = new pdoConn();
+
+    }
+
 	public function getMainLinks() {
 
 		$db = new dbConn();
@@ -224,38 +233,58 @@ class adminTools {
 			
 	}
 	
-	public function changePassword($currentPass, $newPass, $confirmPass) {
+  	public function changePassword($currentPass, $newPass, $confirmPass) {
+	
+      $db = new dbConn();
+
+  		$admin = unserialize($_SESSION['admin']);
 		
-		$db = new dbConn();
+	  	$currentHashedPass = md5($currentPass);
+		  $newHashedPass = md5($newPass);
+  		$confirmHashedPass = md5($confirmPass);
 		
-		$admin = unserialize($_SESSION['admin']);
-		
-		$currentHashedPass = md5($currentPass);
-		$newHashedPass = md5($newPass);
-		$confirmHashedPass = md5($confirmPass);
-		
-		$result = $db->selectWhere("adminUser, adminPass","adminUsers","adminUser='".$admin->getUsername()."' AND adminPass='".$currentHashedPass."'",0);
-		
-		if ($result->num_rows == 1) {
+      $field = array("adminUser","adminPass");
+      $table = "adminUsers";
+  
+      $where[0]['column'] = "adminUser";
+      $where[0]['operator'] = "=";
+      $where[0]['value'] = $admin->getUsername();
+
+      $result = $this->pdoConn->select($field,$table,$where);
+
+		  if ($result[0] == $admin->getUsername()) {
 			
-			if ($newHashedPass == $confirmHashedPass) {
+			  if ($newHashedPass == $confirmHashedPass) {
 				
-				if ($db->update("adminUsers","adminPass='".$newHashedPass."'","adminID='".$admin->getID()."'",0)) {
-					return "<p>Password sucessfully updated!</p>";
-				}
-				else {
-					return "<p>Password could not be updated!</p>";
-				}
-			}
+				  if ($db->update("adminUsers","adminPass='".$newHashedPass."'","adminID='".$admin->getID()."'",0)) {
+					
+            $return['message'] = "Password sucessfully updated!";
+            $return['error'] = 0;
+				
+          } else {
+					
+            $return['message'] = "Password could not be updated!";
+            $return['error'] = 1;
+				
+          }
+		
+        } else {
 			
-			else {
-				return "<p>Passwords did not match!</p>";
-			}
-		}
-		else {
-			return "<p>Admin password was incorrect!</p>";
-		}
-	}
+          $return['message'] = "Passwords did not match!";
+          $return['error'] = 1;
+			
+        }
+		
+      } else {
+			
+        $return['message'] =  "Admin password was incorrect!";
+        $return['error'] = 1;
+		
+      }
+
+      return $return;
+
+	  }
 	
 	public function uploadImage($file) {
 		
