@@ -29,15 +29,20 @@
 
     private function doExecute($query) {
 
+      $return['error'] = 0;
+
       try {
         
         $query->execute();
 
       } catch (Exception $e) {
 
-        print "Error!: ".$e->getMessage()."<br />";
+        $return['message'] = "Error!: ".$e->getMessage()."<br />";
+        $return['error'] = 1;
 
       }
+
+      return $return;
 
     }
 
@@ -73,14 +78,20 @@
 
     }
 
-    private function makeWhereString($whereArray) {
+    private function makeOperatorString($itemArray) {
 
       $stringArray = array();
       $newString = "";
       
-      foreach($whereArray as $where) {
+      foreach($itemArray as $item) {
 
-        $string = $where['column'] . $where['operator'] . "?";
+        if (!isset($item['operator'])) {
+
+          $item['operator'] = "=";
+
+        }
+
+        $string = $item['column'] . $item['operator'] . "?";
         array_push($stringArray,$string);
 
       }
@@ -114,8 +125,8 @@
 
       if ($whereArray) {
 
-        $where = $this->makeWhereString($whereArray);
-
+        $where = $this->makeOperatorString($whereArray);
+        
         $queryString .= " WHERE ".$where;
 
       }
@@ -125,7 +136,7 @@
         $queryString .= " ORDER BY ".$orderBy;
 
       }
-
+      
       $query = $this->doPrepare($queryString);
       
       $i = 0;
@@ -140,10 +151,37 @@
         }
 
       }
-        
+      
       $this->doExecute($query);
 
       return $this->getResultArray($query);
+
+    }
+
+    public function update($tableArray, $setArray, $whereArray) {
+
+      $tables = $this->makeCommaSeperatedString($tableArray);
+      $values = $this->makeOperatorString($setArray);
+      $where = $this->makeOperatorString($whereArray);
+
+      $queryString = "UPDATE ".$tables." SET ".$values." WHERE ".$where;
+
+      $query = $this->doPrepare($queryString);
+
+      $i = 0;
+     
+      $bindArray = array_merge($setArray, $whereArray);
+
+      foreach($bindArray as $bind) {
+        
+        $i++;
+        $query->bindParam($i,$bind['value']);
+
+      }
+      
+      $return =  $this->doExecute($query);
+      
+      return $return;
 
     }
 
