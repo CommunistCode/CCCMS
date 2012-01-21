@@ -251,20 +251,31 @@
       $where[0]['value'] = $admin->getUsername();
 
       $result = $this->pdoConn->select($field,$table,$where);
-
-		  if ($result[0] == $admin->getUsername()) {
-			
+      
+      if ($result[0]['adminUser'] == $admin->getUsername() && $result[0]['adminPass'] == $currentHashedPass) {
+		
 			  if ($newHashedPass == $confirmHashedPass) {
 				
-				  if ($db->update("adminUsers","adminPass='".$newHashedPass."'","adminID='".$admin->getID()."'",0)) {
-					
-            $return['message'] = "Password sucessfully updated!";
-            $return['error'] = 0;
-				
-          } else {
-					
+          $table = "adminUsers";
+
+          $set[0]['column'] = "adminPass";
+          $set[0]['value'] = $newHashedPass;
+
+          $where[0]['column'] = "adminID";
+          $where[0]['operator'] = "=";
+          $where[0]['value'] = $admin->getID();
+
+          $updateResult = $this->pdoConn->update($table,$set,$where);
+
+				  if ($updateResult['error'] == 1) {
+	
             $return['message'] = "Password could not be updated!";
             $return['error'] = 1;
+				
+          } else {
+			  
+            $return['message'] = "Password sucessfully updated!";
+            $return['error'] = 0;
 				
           }
 		
