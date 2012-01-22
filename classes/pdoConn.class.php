@@ -116,7 +116,7 @@
 
     }
 
-    public function select($fieldArray, $tableArray, $whereArray=NULL, $orderBy=NULL, $debug=0) {
+    public function select($fieldArray, $tableArray, $whereArray=NULL, $orderBy=NULL, $limit=NULL, $debug=0) {
 
       $fields = $this->makeCommaSeperatedString($fieldArray);
       $tables = $this->makeCommaSeperatedString($tableArray);
@@ -134,6 +134,12 @@
       if ($orderBy) {
 
         $queryString .= " ORDER BY ".$orderBy;
+
+      }
+
+      if ($limit) {
+
+        $queryString .= " LIMIT ".$limit;
 
       }
       
