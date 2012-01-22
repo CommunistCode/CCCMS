@@ -151,14 +151,21 @@
         }
 
       }
-      
+     
+      if ($debug) {
+
+        var_dump($query);
+        print_r($whereArray);
+
+      }
+
       $this->doExecute($query);
 
       return $this->getResultArray($query);
 
     }
 
-    public function update($tableArray, $setArray, $whereArray) {
+    public function update($tableArray, $setArray, $whereArray, $debug=0) {
 
       $tables = $this->makeCommaSeperatedString($tableArray);
       $values = $this->makeOperatorString($setArray);
@@ -178,7 +185,15 @@
         $query->bindParam($i,$bind['value']);
 
       }
-      
+     
+      if ($debug) {
+
+        var_dump($query);
+        print_r($setArray);
+        print_r($whereArray);
+
+      }
+
       $return =  $this->doExecute($query);
       
       return $return;
