@@ -206,6 +206,35 @@
 
     }
 
+    public function customQuery($queryString,$bindArray=NULL,$debug=NULL) {
+
+      $query = $this->doPrepare($queryString);
+
+      $i = 0;
+
+      if ($bindArray != NULL) {
+
+        foreach($bindArray as $bind) {
+
+          $i++;
+          $query->bindParam($i,$bind);
+
+        }
+
+      }
+
+      $return = $this->doExecute($query);
+
+      if ($debug) {
+
+        var_dump($query);
+
+      }
+
+      return $return;
+
+    }
+
   }
 
 ?>
