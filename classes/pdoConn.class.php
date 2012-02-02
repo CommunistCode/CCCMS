@@ -82,7 +82,8 @@
 
       $stringArray = array();
       $newString = "";
-      
+      $firstIteration = 1;     
+ 
       foreach($itemArray as $item) {
 
         if (!isset($item['operator'])) {
@@ -91,13 +92,29 @@
 
         }
 
-        $string = $item['column'] . $item['operator'] . "?";
+        if (!isset($item['joinOperator'])) {
+
+          $item['joinOperator'] = "AND";
+
+        }
+
+        if ($firstIteration) {
+
+          $string = $item['column'] . $item['operator'] . "?";
+          $firstIteration = 0;
+
+        } else {
+        
+          $string = " ".$item['joinOperator']." ".$item['column'] . $item['operator'] . "?";
+        
+        }
+
         array_push($stringArray,$string);
 
       }
 
-      $newString = implode(" AND ",$stringArray);
-
+      $newString = implode("",$stringArray);
+      
       return $newString;
 
     }
@@ -157,7 +174,7 @@
         }
 
       }
-     
+      
       if ($debug) {
 
         var_dump($query);
