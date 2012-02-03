@@ -1,0 +1,129 @@
+/* CSS Document */
+body {
+	margin: 10px;
+	font-family: sans-serif;
+}
+
+img { 
+	border: none; 
+} 
+
+h1 {
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+	font-size:x-large;
+}
+
+h2 {
+	font-size: large;
+}
+
+p {
+	font-size: small;
+}
+
+ul {
+	margin: 0px;
+	padding: 0 0 0 18px;
+}
+
+td {
+	font-size: small;
+}
+
+#mainContainer {
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: auto;
+	margin-bottom: auto;
+	background:url('../images/faux.jpg') repeat 0 0;
+	width: 1000px;
+}
+
+#title {
+	margin: 0 0 0 0px;
+	padding: 16 0 10 18px;
+	background:url('../images/gradBack.jpg') repeat 0 0;
+	height: 45px;
+	color: white;
+}
+
+#title h1 {
+	font-size: xx-large;
+}
+
+#links {
+	padding: 36 0 10 18px;
+	float: left;
+	width: 200px;
+	margin: 0 0 0 0px;
+	
+}
+
+#mainLink {
+	margin: 0 0 15 0px;
+	border-bottom:1px dashed red;
+	width: 140px;
+}
+
+#mainLink:hover {
+	margin: 0 0 15 0px;
+	border-bottom:1px dashed blue;
+	width: 140px;
+}
+
+a.mainLink:visited, a.mainLink:hover, a.mainLink:link {
+	color: black;
+	text-decoration: none;
+	font-size: small;
+}
+
+#subLink {
+	margin: 0 0 15 0px;
+	width: 140px;
+}
+
+a.sublink:link {
+	color: black;
+	font-size: small;
+}
+
+a.sublink:visited {
+	color: black;
+	font-size: small;
+}
+
+a.sublink:hover {
+	border-bottom: 1px solid red;
+}
+
+#body {
+	float: right;
+	width: 760px;
+	margin: 0 0 0 0px;
+	padding: 25 0 0 0px;
+}
+
+#footer {
+	background:url('../images/gradFoot.jpg') repeat 0 0;
+	line-height: 30px;
+	height: 30px;
+	padding: 0 18px 0 18px;
+	clear: both;
+	color: white;
+	font-size: x-small;
+	font-weight: bold;
+	text-align: right;
+}
+
+.tagsTable {
+	border: 1px solid grey;
+}
+
+.tagsTable tr {
+	height: 30px;
+}
+
+.tagsTable td {
+	padding: 0 5px 0 5px;
+}
