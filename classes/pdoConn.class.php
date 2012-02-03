@@ -36,7 +36,7 @@
         $query->execute();
 
       } catch (Exception $e) {
-
+        
         $return['message'] = "Error!: ".$e->getMessage()."<br />";
         $return['error'] = 1;
 
@@ -78,7 +78,7 @@
 
     }
 
-    private function makeOperatorString($itemArray) {
+    private function makeOperatorString($itemArray, $type=NULL) {
 
       $stringArray = array();
       $newString = "";
@@ -94,7 +94,15 @@
 
         if (!isset($item['joinOperator'])) {
 
-          $item['joinOperator'] = "AND";
+          if ($type == "SET") {
+
+            $item['joinOperator'] = ",";
+
+          } else {
+
+            $item['joinOperator'] = "AND";
+
+          }
 
         }
 
@@ -191,7 +199,7 @@
     public function update($tableArray, $setArray, $whereArray, $debug=0) {
 
       $tables = $this->makeCommaSeperatedString($tableArray);
-      $values = $this->makeOperatorString($setArray);
+      $values = $this->makeOperatorString($setArray, "SET");
       $where = $this->makeOperatorString($whereArray);
 
       $queryString = "UPDATE ".$tables." SET ".$values." WHERE ".$where;
