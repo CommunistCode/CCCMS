@@ -4,7 +4,7 @@
 	
     <title>Admin Area - Home</title>
 		
-    <link href="stylesheet/stylesheet.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo($directoryPath); ?>/admin/themes/default/stylesheets/stylesheet.css" rel="stylesheet" type="text/css" />
 	
   </head>
 	
@@ -15,7 +15,7 @@
       <div id="title">
 			
         <?php 
-					require_once("includes/title.inc.php"); 
+					require_once($fullPath."/admin/includes/title.inc.php"); 
 				?>
 			
       </div>
@@ -44,13 +44,13 @@
 			
       <div id="links">
 			
-        <?php require_once("includes/adminLinks.inc.php"); ?>
+        <?php require_once($fullPath."/admin/includes/adminLinks.inc.php"); ?>
 
 			</div>
 			
       <div id="footer">
 			
-        <?php require_once("includes/footer.inc.php"); ?>
+        <?php require_once($fullPath."/admin/includes/footer.inc.php"); ?>
 			
       </div>
 		
