@@ -2,7 +2,7 @@
 
 session_start();
 
-echo("<link src='".$fullPath."/admin/stylesheet/stylesheet.css' />");
+echo("<link src='".$directoryPath."/admin/stylesheet/stylesheet.css' />");
 
 //Include adminTools class
 require_once($fullPath."/admin/classes/adminTools.class.php");

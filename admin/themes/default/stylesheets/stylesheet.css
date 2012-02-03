@@ -36,14 +36,14 @@ td {
 	margin-right: auto;
 	margin-top: auto;
 	margin-bottom: auto;
-	background:url('../images/faux.jpg') repeat 0 0;
+	background:url('../../../images/faux.jpg') repeat 0 0;
 	width: 1000px;
 }
 
 #title {
 	margin: 0 0 0 0px;
 	padding: 16 0 10 18px;
-	background:url('../images/gradBack.jpg') repeat 0 0;
+	background:url('../../../images/gradBack.jpg') repeat 0 0;
 	height: 45px;
 	color: white;
 }
@@ -105,7 +105,7 @@ a.sublink:hover {
 }
 
 #footer {
-	background:url('../images/gradFoot.jpg') repeat 0 0;
+	background:url('../../../images/gradFoot.jpg') repeat 0 0;
 	line-height: 30px;
 	height: 30px;
 	padding: 0 18px 0 18px;
