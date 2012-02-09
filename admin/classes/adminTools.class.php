@@ -318,7 +318,7 @@
 			
 			while ($file = readdir($handle)) {
 				
-				if ($file != "." && $file != "..") {
+				if ($file != "." && $file != ".." && $file != ".gitignore" ) {
 				
 					$render .= "<option value='".$file."'>".$file."</option>\n";
 					
