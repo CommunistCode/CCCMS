@@ -130,6 +130,7 @@
   		$patterns[8] = "/\[header\](.*?)\[\/header\]/is"; //Heading	
 	  	$patterns[9] = "/\[big_header\](.*?)\[\/big_header\]/is";	//Big heading
 		  $patterns[10] = "/\[small_header\](.*?)\[\/small_header\]/is";	//Small heading
+		  $patterns[11] = "/\[code\](.*?)\[\/code\]/is";	//Code block
 		
   		$replacements[1] = "<strong>$1</strong>";
 	  	$replacements[2] = "<em>$1</em>";
@@ -141,6 +142,8 @@
 	  	$replacements[8] = "<h2>$1</h2>";
 		  $replacements[9] = "<h1>$1</h1>";
   		$replacements[10] = "<h3>$1</h3>";
+  		$replacements[11] = "<div class='code'>$1</div>";
+
 	
 	  	$result=nl2br(preg_replace($patterns,$replacements,$text));
 
