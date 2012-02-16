@@ -3,6 +3,7 @@
   class pdoConn {
 
     private $pdoConn;
+    private $lastInsertID;
 
     function __construct() {
 
@@ -17,6 +18,12 @@
         $this->manageException($e);
 
       }
+
+    }
+
+    public function getLastInsertID() {
+
+      return $this->lastInsertID;
 
     }
 
@@ -191,7 +198,7 @@
       }
 
       $this->doExecute($query);
-
+      
       return $this->getResultArray($query);
 
     }
@@ -231,6 +238,48 @@
 
     }
 
+    public function insert($table,$insertArray) {
+
+      $fieldArray = array();
+      $valueArray = array();
+
+      foreach($insertArray as $insert) {
+
+        array_push($fieldArray,$insert['field']);
+        array_push($valueArray,$insert['value']);
+
+      }
+      
+      $fields = $this->makeCommaSeperatedString($fieldArray);
+      
+      $numValues = count($valueArray);
+
+      for ($i=0; $i<$numValues; $i++) {
+
+        $valPlaceholderArray[$i] = ":".$i;
+
+      }
+
+      $valPlaceholders = $this->makeCommaSeperatedString($valPlaceholderArray);
+
+      $queryString = "INSERT INTO ".$table." (".$fields.") values(".$valPlaceholders.")";
+      
+      $query = $this->doPrepare($queryString);
+      
+      for ($i=0; $i<$numValues; $i++) { 
+  
+        $query->bindParam(":".$i, $valueArray[$i]);
+      
+      }
+      
+      $return = $this->doExecute($query);
+      
+      $this->lastInsertID = $this->pdoConn->lastInsertID();
+      
+      return $return;
+
+    }
+
     public function customQuery($queryString,$bindArray=NULL,$debug=NULL) {
 
       $query = $this->doPrepare($queryString);
@@ -256,7 +305,7 @@
 
       }
 
-      return $return;
+      return $this->getResultArray($query);
 
     }
 
