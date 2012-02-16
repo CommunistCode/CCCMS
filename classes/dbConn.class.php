@@ -3,8 +3,6 @@
 //Manage database operations
 //db.class.php
 
-require_once($fullPath."/config/config.php");
-
 class dbConn {
 	
 	public $mysqli;
