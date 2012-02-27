@@ -2,7 +2,7 @@
 
 	$result = $pageTools->getPageLinks();
 	
-	while($row = $result->fetch_assoc()) {
+  foreach($result as $row) {
 	
 		if (!$row['linkOrder'] == 0) {
 		
