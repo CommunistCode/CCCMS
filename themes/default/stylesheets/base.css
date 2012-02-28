@@ -1,185 +1,149 @@
-/* CSS Document */
+/*************************/
+/* Standard Base Classes */
+/*************************/
 
 html {
-	height: 100%;
-	padding: 0px;
-	margin: 0px;
-	background : #EDEDED;
+  height: 100%;
 }
 
 body {
-	margin: 0px;
-	padding: 0px;
-	font-family: 'Open Sans', sans-serif;
-	height: 100%;
+  font-family: sans-serif;
+  height: 100%;
+  text-align: center;
+  background: #EDEDED;
 }
 
 p {
-	margin: 0px;
-	padding: 0px 20px 0px 0px;
-	font-size: 13px;
-	text-align: justify;
-	line-height:150%;
-	color: #4A4A4A;
+  margin: 10px;
+  font-size: 12px;
+  text-align: justify;
+  line-height:150%;
+  color: #4A4A4A;
 }
 
 input, textarea {
-	border: solid 1px black;
-	padding: 4px;
-	font-size: 11px;
+  border: solid 1px black;
+  padding: 4px;
+  font-size: 11px;
 }
 
 a {
-	color: black;
-	font-size: 13px;
-}
-
-h1 {
-	font-size: 25px;
-	border-bottom: solid 2px #6ac857;
-	width: 99%;
+  color: black;
 }
 
 .help {
-	margin: 0px 20px 20px 20px;
-	background: #EDEDED;
-	padding: 10px;
-	border: 1px solid black;
+  margin: 0px 20px 20px 20px;
+  background: #EDEDED;
+  padding: 10px;
+  border: 1px solid black;
 }
 
 .tableHeader td {
-	border-bottom: solid 1px #bfa567;
-	padding: 3px 0px 3px 0px;
+  border-bottom: solid 1px #bfa567;
+  padding: 3px 0px 3px 0px;
 }
 
 #mainContainer {
-	padding: 0px 0px 0px 0px;
-	margin: 0px auto -31px auto;
-	width: 910px;
-	min-height: 100%;
-	height: auto !important;
-	height: 100%;
-	background: white;
-	border-left: 1px solid grey;
-	border-right: 1px solid grey;
-}
-
-#bodyContainer {
-	padding: 0px;
-	margin: 0px;
-	float: left;
-	width: 100%;
-	background: white;
+  position: relative;
+  width: 910px;
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0px auto -31px auto;
+  background: white;
+  border-left: 1px solid grey;
+  border-right: 1px solid grey;
 }
 
 #title {
-	margin: 0px;
-	padding: 20px 0px 0px 0px;
-	height: 100px;
-	width:100%;
+  position: relative;
+  text-align: left;
+  background: #cc0000;
+  height: 100px;
+  width: 910px;
 }
 
-#title h1 {
-	padding: 0px;
-	margin: 0px;
-	font-size: 40px;
-	border: 0px;
-	text-align:center;
+#title img {
+  margin: 0px 0px 0px 5px;
+  border: 0px;
 }
 
 #navBar {
-	float: left;
-	width:100%;
-	margin: 0px 0px 0px 0px;
-	border-top: 1px solid grey;
-	border-bottom: 1px solid grey;
-	background: #bfa567;
-	padding: 0px 0px 0px 0px;
-	color: white;
-	font-weight: bold;
-	font-size: 12px;
-	height: 30px;
+  height: 30px;
+  width: 910px;
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
+  background: #9E7575;
 }
 
 #navBar a {
-	font-size: 12px;
+  float: left;
+  color: white;
+  font-size: 11px;
+  font-weight: bold;
+  line-height: 30px;
+  text-align: center;
+  padding: 0px 15px 0px 15px;
 }
 
-.navBarLink {
-	float: left;
-	padding: 7px 0px 0px 30px;
-	text-align: center;
-	background: #bfa567;
-	margin: 0px 0px 0px 0px;
+#navBar .navBarLinkFirst a {
 }
 
-.navBarLinkSelected {
-	float: left;
-	padding: 7px 0px 0px 30px;
-	text-align: center;
-	background: #bfa567;
-	margin: 0px 0px 0px 0px;
+#navBar .navBarLink a {
 }
 
-#bodyTop {
-	position: relative;
-	color: white;
-	height: 50px;
-	margin: 20px 0px 0px 0px;
-	background: red;
+#navBar .navBarLinkSelected a {
 }
 
 #body {
-	width: auto;
-	color: #4A4A4A;
-	margin: 20px 0px 0px 0px;
-	padding: 10px 10px 10px 10px;
-	clear: both;
-	font-size: 14px;
-	background : WHITE;
-	overflow: auto;
-	line-height: 150%;
-	text-align: justify;
+  color: #4A4A4A;
+  clear: both;
+  font-size: 14px;
+  overflow: auto;
+  line-height: 150%;
+  text-align: justify;
+  margin: 0px 0px 20px 0px;
+}
+
+#body h1 {
+  border-bottom: 2px solid #cc0000;
+  font-size: 25px;
+  line-height: 30px;
+  margin: 0px 0px 10px 0px;
+}
+
+#body.normalBody {
+  margin: 20px 20px 20px 20px;
 }
 
 #footer {
-	position: relative;
-	height: 30px;
-	width: 910px;
-	margin: 0px auto 0px auto;
-	padding: 0px 0px 0px 0px;
-	color: white;
-	background: #bfa567;
-	font-size: x-small;
-	font-weight: bold;
-	text-align: right;
-	clear: both;
-	border-top: 1px solid grey;
-	border-right: 1px solid grey;
-	border-left: 1px solid grey;
+  position: relative;
+  height: 30px;
+  width: 910px;
+  margin: 0px auto 0px auto;
+  padding: 0px 0px 0px 0px;
+  color: white;
+  background: #9E7575;
+  clear: both;
+  border-top: 1px solid grey;
+  border-right: 1px solid grey;
+  border-left: 1px solid grey;
 }
 
-img {
-	border: 1px solid black;
+#footer a {
+  float: right;
+  font-size: 11px;
+  margin-right: 10px;
+  text-align: right;
+  line-height: 30px;
+  color: white;
 }
 
-img.imageLeft {
-	float:left;
-	margin-right: 20px;
-	margin-bottom: 5px;
-	display:block;
+.push {
+  clear: both;
+  height: 31px;
 }
 
-img.imageRight {
-	float:right;
-	margin-left: 20px;
-	margin-bottom: 5px;
-	display:block;
-}
-
-img.imageCentre {
-	margin-left: auto;
-	margin-right: auto;
-	margin-bottom: 20px;
-	display:block;
+.clear {
+  clear: both;
 }

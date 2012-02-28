@@ -1,0 +1,49 @@
+/* body.faux: used for pages with sidebars */
+
+#mainContainer.faux {
+  background: url('../images/fauxBody.png') repeat-y;
+}
+
+/* sideBar: used to style the sidebars */
+
+/* No right margin to give text more room to breathe */
+.sidebar {
+  float: left;
+  width: 140px;
+  margin: 20px 0px 0px 10px;
+}
+
+.sidebar ul {
+  list-style: none;
+  margin: 0px;
+  border: none;
+}
+
+.sidebar li {
+  list-style: none;
+  margin: 0px 0px 5px 0px;
+  border: none;
+  font-size: 12px;
+}
+
+.sidebar a, .sidebar p {
+  font-size: 12px;
+}
+
+/* Width set at 10px less to stop underline overstretching */
+.sideBar .linkHeader {
+  width: 130px;
+  font-weight: bold;
+  border-bottom: 1px solid #cc0000;
+  margin: 20px 0px 10px 0px;
+}
+
+.sidebar .linkHeaderTop {
+  margin: 10px 0px 10px 0px;
+}
+
+.sideBody {
+  float: right;
+  width: 720px;
+  margin: 20px 20px 0px 10px;
+}

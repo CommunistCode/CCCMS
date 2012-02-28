@@ -1,1 +1,1 @@
-<div id='title'></div>
+<img src='/themes/default/images/communistCodeOriginal.png' />
