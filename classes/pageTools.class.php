@@ -63,17 +63,17 @@
     public function getStartingPage() {
 
       $result = $this->getPageLinks();
-
+      
       $linkOrder = 0;
 
       do {
 
-        $result = array_shift($result);
-        $linkOrder = $result['linkOrder']; 
+        $tempResult = array_shift($result);
+        $linkOrder = $tempResult['linkOrder']; 
   
       }  while ($linkOrder == 0); 
-
-      return $result['dContentID'];
+      
+      return $tempResult['dContentID'];
 
     }
   
