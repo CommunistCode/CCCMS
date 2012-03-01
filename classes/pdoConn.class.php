@@ -9,7 +9,7 @@
 
       try {
         
-        $this->pdoConn = new PDO('mysql:host=localhost;dbname='.$GLOBALS['DB_NAME'],$GLOBALS['DB_USER'],$GLOBALS['DB_PASS']);
+        $this->pdoConn = new PDO('mysql:host=localhost;dbname='.DB_NAME,DB_USER,DB_PASS);
 
         $this->pdoConn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -28,9 +28,17 @@
     }
 
     private function manageException($e) {
+  
+      if (DEBUG) {
 
-      print "<strong>ERROR:</strong> ".$e->getMessage()." <br />";
-      die();
+        print "<strong>ERROR:</strong> ".$e->getMessage()." <br />";
+        die();
+
+      } else {
+
+        header("Location:".DIRECTORY_PATH."error.php?type=database") ;
+
+      }
 
     }
 
@@ -43,9 +51,8 @@
         $query->execute();
 
       } catch (Exception $e) {
-        
-        $return['message'] = "Error!: ".$e->getMessage()."<br />";
-        $return['error'] = 1;
+
+        $this->manageException($e);        
 
       }
 
@@ -61,7 +68,7 @@
 
       } catch (Exception $e) {
 
-        print "Error!: ".$e->getMessage()."<br />";
+        $this->manageException($e);
 
       }
 
