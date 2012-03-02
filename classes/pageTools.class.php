@@ -21,7 +21,7 @@
       $where[0]['operator'] = "=";
       $where[0]['value'] = $page;
 
-      $result = $this->pdoConn->select($field,$table,$where,1);
+      $result = $this->pdoConn->select($field,$table,$where);
   
       if ($result == NULL) {
 

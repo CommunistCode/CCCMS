@@ -44,7 +44,7 @@
 
     private function varDump($query) {
 
-      echo("<pre>");
+      echo("<pre class='varDump'>");
       var_dump($query);
       echo("</pre>");
 
