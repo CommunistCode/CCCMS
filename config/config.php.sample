@@ -1,19 +1,32 @@
 <?php
 
+  //Set debug TRUE/FALSE
+  define("DEBUG",FALSE);
+
+  define("SUCCESS",0);
+  define("FAILURE",-1);
+
 	//Set timezone of your website
   date_default_timezone_set("Europe/London");
 
 	//folderPath: the directory in which CCCMS is stored, don't use trailing slash
-	$GLOBALS['directoryPath'] = "/cccms";
+	$GLOBALS['directoryPath'] = "";
+  define("DIRECTORY_PATH","");
 
 	//fullPath: automatically generated from Document Root and Directory Path
   $GLOBALS['fullPath'] = $_SERVER['DOCUMENT_ROOT']."".$GLOBALS['directoryPath'];
+  define("FULL_PATH",$_SERVER['DOCUMENT_ROOT'].DIRECTORY_PATH);
 
 	//Database credentials
-	$GLOBALS['DB_USER'] = "cccms";
-	$GLOBALS['DB_PASS'] = "cccms";
-	$GLOBALS['DB_NAME'] = "CCCDEV";
+	$GLOBALS['DB_USER'] = "";
+	$GLOBALS['DB_PASS'] = "";
+	$GLOBALS['DB_NAME'] = "";
 
-	$title = "CCCMS";
+  define("DB_USER","");
+  define("DB_PASS","");
+  define("DB_NAME","");
+
+	$title = "";
+  define("SITE_NAME","");
 	
 ?>

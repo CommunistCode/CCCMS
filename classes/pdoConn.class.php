@@ -42,6 +42,14 @@
 
     }
 
+    private function varDump($query) {
+
+      echo("<pre>");
+      var_dump($query);
+      echo("</pre>");
+
+    } 
+
     private function doExecute($query) {
 
       $return['error'] = 0;
@@ -199,8 +207,8 @@
       
       if ($debug) {
 
-        var_dump($query);
-        print_r($whereArray);
+        $this->varDump($query);
+        $this->varDump($whereArray);
 
       }
 
@@ -233,19 +241,19 @@
      
       if ($debug) {
 
-        var_dump($query);
-        print_r($setArray);
-        print_r($whereArray);
+        $this->varDump($query);
+        $this->varDump($setArray);
+        $this->varDump($whereArray);
 
       }
 
-      $return =  $this->doExecute($query);
+      $this->doExecute($query);
       
-      return $return;
+      return SUCCESS;
 
     }
 
-    public function insert($table,$insertArray) {
+    public function insert($table,$insertArray,$debug=NULL) {
 
       $fieldArray = array();
       $valueArray = array();
@@ -278,12 +286,20 @@
         $query->bindParam(":".$i, $valueArray[$i]);
       
       }
+
+      if ($debug) {
+
+        $this->varDump($query);
+        $this->varDump($fieldArray);
+        $this->varDump($valueArray);
+
+      }
       
-      $return = $this->doExecute($query);
+      $this->doExecute($query);
       
       $this->lastInsertID = $this->pdoConn->lastInsertID();
       
-      return $return;
+      return SUCCESS;
 
     }
 
@@ -304,13 +320,13 @@
 
       }
 
-      $return = $this->doExecute($query);
-
       if ($debug) {
 
-        var_dump($query);
+        $this->varDump($query);
 
       }
+
+      $this->doExecute($query);
 
       return $this->getResultArray($query);
 
