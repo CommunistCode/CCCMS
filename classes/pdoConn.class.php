@@ -31,7 +31,7 @@
   
       if (DEBUG) {
 
-        print "<strong>ERROR:</strong> ".$e->getMessage()." <br />";
+        print "<strong>DATABASE ERROR:</strong> ".$e->getMessage()." <br />";
         die();
 
       } else {
