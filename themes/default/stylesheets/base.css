@@ -32,6 +32,7 @@ a {
 }
 
 .varDump {
+  font-size: 10px;
   padding: 10px;
   background: pink;
   border: 1px solid black;

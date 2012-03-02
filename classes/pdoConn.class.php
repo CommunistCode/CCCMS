@@ -4,6 +4,7 @@
 
     private $pdoConn;
     private $lastInsertID;
+    private $debug = 0;
 
     function __construct() {
 
@@ -16,6 +17,22 @@
       } catch (PDOException $e) {
 
         $this->manageException($e);
+
+      }
+
+    }
+
+    public function debug($debug) {
+
+      $debug = strtolower($debug);
+      
+      if ($debug == "on") {
+
+        $this->debug = 1;
+
+      } else {
+
+        $this->debug = 0;
 
       }
 
@@ -171,7 +188,7 @@
 
     }
 
-    public function select($fieldArray, $tableArray, $whereArray=NULL, $orderBy=NULL, $limit=NULL, $debug=0) {
+    public function select($fieldArray, $tableArray, $whereArray=NULL, $orderBy=NULL, $limit=NULL) {
 
       $fields = $this->makeCommaSeperatedString($fieldArray);
       $tables = $this->makeCommaSeperatedString($tableArray);
@@ -213,7 +230,7 @@
 
       }
       
-      if ($debug) {
+      if ($this->debug) {
 
         $this->varDump($query);
         $this->varDump($whereArray);
@@ -226,7 +243,7 @@
 
     }
 
-    public function update($tableArray, $setArray, $whereArray, $debug=0) {
+    public function update($tableArray, $setArray, $whereArray) {
 
       $tables = $this->makeCommaSeperatedString($tableArray);
       $values = $this->makeOperatorString($setArray, "SET");
@@ -247,7 +264,7 @@
 
       }
      
-      if ($debug) {
+      if ($this->debug) {
 
         $this->varDump($query);
         $this->varDump($setArray);
@@ -261,7 +278,7 @@
 
     }
 
-    public function insert($table,$insertArray,$debug=NULL) {
+    public function insert($table,$insertArray) {
 
       $fieldArray = array();
       $valueArray = array();
@@ -295,7 +312,7 @@
       
       }
 
-      if ($debug) {
+      if ($this->debug) {
 
         $this->varDump($query);
         $this->varDump($fieldArray);
@@ -311,7 +328,7 @@
 
     }
 
-    public function customQuery($queryString,$bindArray=NULL,$debug=NULL) {
+    public function customQuery($queryString,$bindArray=NULL) {
 
       $query = $this->doPrepare($queryString);
 
@@ -328,7 +345,7 @@
 
       }
 
-      if ($debug) {
+      if ($this->debug) {
 
         $this->varDump($query);
 

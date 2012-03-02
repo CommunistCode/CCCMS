@@ -12,6 +12,7 @@
 
     }
 
+    
     public function checkPageExists($page) {
 
       $field = "dContentID";
