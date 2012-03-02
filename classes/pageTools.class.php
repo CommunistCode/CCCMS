@@ -12,6 +12,27 @@
 
     }
 
+    public function checkPageExists($page) {
+
+      $field = "dContentID";
+      $table = "dContent";
+      
+      $where[0]['column'] = "dContentID";
+      $where[0]['operator'] = "=";
+      $where[0]['value'] = $page;
+
+      $result = $this->pdoConn->select($field,$table,$where,1);
+  
+      if ($result == NULL) {
+
+        return FAILURE;
+
+      }
+
+      return SUCCESS;
+
+    }
+
     public function getPageIDbyDirectLink($link) {
 
       $field = "dContentID";

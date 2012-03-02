@@ -159,7 +159,15 @@
 
       }
 
-      return $resultArray;
+      if (count($resultArray)) {
+
+        return $resultArray;
+
+      } else {
+
+        return NULL;
+
+      }
 
     }
 

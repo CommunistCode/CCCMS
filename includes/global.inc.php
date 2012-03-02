@@ -1,6 +1,6 @@
 <?php
 
-	//Open sessions
+	//Open session
 	session_start();
 
 	require_once( $fullPath . "/classes/pageTools.class.php");
@@ -8,9 +8,16 @@
 	$pageTools = new pageTools();
 
 	if (isset($_GET['page'])) {
-		$page = $_GET['page'];
-	}
-	else if (!isset($page)) {
+
+    if ($pageTools->checkPageExists($_GET['page']) == 0) {
+		
+      $page = $_GET['page'];
+    
+    }
+
+	} 
+
+  if (!isset($page)) {
 		
 		$page = $pageTools->getStartingPage();
 
