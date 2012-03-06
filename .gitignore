@@ -5,4 +5,4 @@ membership/
 auction/
 blog/
 wiki/
-config/config.php
+/base/config/config.php

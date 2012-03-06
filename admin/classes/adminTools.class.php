@@ -1,7 +1,6 @@
 <?php
 
   require_once($fullPath.'/admin/classes/admin.class.php');
-  require_once($fullPath.'/classes/pdoConn.class.php');
 
   class adminTools {
 

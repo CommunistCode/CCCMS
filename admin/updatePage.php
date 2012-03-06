@@ -1,101 +1,66 @@
 <?php 
 
-	require_once("../config/config.php");
-	require_once("includes/global.inc.php");
-	require_once("includes/checkLogin.inc.php");
-	require_once($fullPath."/classes/pageTools.class.php");
+	require_once("includes/adminGlobal.inc.php");
 
-?>
+  $page->set("title","Update Page");
+  $page->set("heading","Update Page");
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<title>Admin Area - Manage Pages</title>
-<link href="stylesheet/stylesheet.css" rel="stylesheet" type="text/css" />
-</head>
-<body>
-<div id="mainContainer">
-	<div id="title">
-	<?php require_once("includes/title.inc.php"); ?>
-	</div>
-
-	<div id="body">
-	<h1>Update Page</h1>
-	<?php
 	if (isset($_POST['updatePage'])) {
 				
 		if ($adminTools->updateDynamic($_POST['pageSelection'],$_POST['title'],$_POST['text'],$_POST['linkName'])) {
-			echo("<p><font color='green'>Succesful update!</font></p>");
-		}
-		else {
-			echo("<font color='red'><p>Unsuccesful update!</p></font>");
-		}
-	}
 
-	else if (isset($_POST['pageSelection'])) {
+			$content = "<p><font color='green'>Succesful update!</font></p>";
+
+		}	else {
 		
-		$pageTools = new pageTools();
+    	$content = "<font color='red'><p>Unsuccesful update!</p></font>";
 		
-		$content = $pageTools->getDynamicContent($_POST['pageSelection']);
+    }
+
+	}	else if (isset($_POST['pageSelection'])) {
 		
-		require_once("includes/showTags.inc.php");
+		$pageContent = $pageTools->getDynamicContent($_POST['pageSelection']);
 		
-		echo("<p>Your are currently editing <strong>".$content['linkName']."</strong></p>\n");
-		echo("<form method='post' action='updatePage.php' name='editPage'>\n");
-		echo("<table>\n");
-		echo("<tr>\n");
-		echo("<td width='100'>Title</td>\n");
-		echo("<td><input type='text' name='title' value='".$content['title']."' size='61'/></td>\n");
-		echo("</tr>\n");
-		echo("<tr>\n");
-		echo("<td>Text</td>\n");
-		echo("<td><textarea rows='30' cols='70' name='text'>".$content['text']."</textarea></td>\n");
-		echo("</tr>\n");
-		echo("<tr>\n");
-		echo("<td>Link Name</td>\n");
-		echo("<td><input type='text' name='linkName' value='".$content['linkName']."' size='35'/></td>\n");
-		echo("</tr>\n");
-		echo("<tr>\n");
-		echo("<td></td>\n");
-		echo("<td><br /><input type='submit' name='updatePage' id='updatePage' value='Update Page' /></td>\n");
-		echo("</tr>\n");
-		echo("</table>\n");
-		echo("<input type='hidden' name='pageSelection' id='pageSelection' value='".$_POST['pageSelection']."' />\n");
-		echo("</form>\n");
-	}
+		$page->addInclude("includes/showTags.inc.php",array("adminTools"=>$adminTools));
 
-	else {
-		
-		echo("<form name='updatePage' method='post'>\n");
-		echo("<p>Select the page you wish to update from the list below:</p>\n");
-		echo($adminTools->renderPageList());
-		echo("<input type='submit' name='submit' id='submit' value='Edit Page'/>\n");
-		echo("</form>\n");
-	}
+    $content = "	
+	
+  		<p>Your are currently editing <strong>".$pageContent['linkName']."</strong></p>\n
+	  	<form method='post' action='updatePage.php' name='editPage'>\n
+		  <table>\n
+  		<tr>\n
+	  	<td width='100'>Title</td>\n
+		  <td><input type='text' name='title' value='".$pageContent['title']."' size='61'/></td>\n
+  		</tr>\n
+	  	<tr>\n
+		  <td>Text</td>\n
+  		<td><textarea rows='30' cols='70' name='text'>".$pageContent['text']."</textarea></td>\n
+	  	</tr>\n
+		  <tr>\n
+  		<td>Link Name</td>\n
+		  <td><input type='text' name='linkName' value='".$pageContent['linkName']."' size='35'/></td>\n
+	  	</tr>\n
+  		<tr>\n
+	  	<td></td>\n
+		  <td><br /><input type='submit' name='updatePage' id='updatePage' value='Update Page' /></td>\n
+  		</tr>\n
+	  	</table>\n
+		  <input type='hidden' name='pageSelection' id='pageSelection' value='".$_POST['pageSelection']."' />\n
+  		</form>\n";
+	
+  } else {
 
-	?>
+    $content = "	
+	
+  	  <form name='updatePage' method='post'>\n
+    	<p>Select the page you wish to update from the list below:</p>\n
+	 	  ".$adminTools->renderPageList()."
+  	  <input type='submit' name='submit' id='submit' value='Edit Page'/>\n
+	    </form>\n";
+	
+  }
 
-	</div>
+  $page->addContent($content);
+  $page->render("corePage.inc.php");
 
-	<div id="links">
-	<?php 
-
-	//Sublinks
-	//1 = ManagePages
-	//2 = ManageSite
-	//3 = ManageAdmin
-
-	$page=1;
-	require_once("includes/adminLinks.inc.php"); 
-
-	?>
-	</div>
-
-	<div id="footer">
-	<?php require_once("includes/footer.inc.php"); ?>
-	</div>
-</div>
-</body>
-</html>
-
+?>

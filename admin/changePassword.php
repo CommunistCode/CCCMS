@@ -1,26 +1,22 @@
 <?php 
 
-	require_once("../config/config.php");
-	require_once("includes/global.inc.php");
-	require_once("includes/checkLogin.inc.php");
+	require_once("includes/adminGlobal.inc.php");
 
-  $pageTools = new pageTools();
+  $page->set("title","Change Password");
+  $page->set('heading',"Change Password"); 
 
-	$title = "Admin Area : Change Password";
-  $heading = "Change Password";
-					
   if (isset($_POST['submit'])) {
 						
 	  $result = ($adminTools->changePassword($_POST['currentPass'],$_POST['newPass'],$_POST['confirmPass']));
-
-    $content = "<p>".$result['message']."</p>";
+    $page->addContent = "<p>".$result['message']."</p>";
+    
 
 	} else {
-
-    $include = "includes/changePasswordForm.inc.php";
+    
+    $page->addInclude("includes/changePasswordForm.inc.php");
 
   }
 
-  require_once($fullPath."/admin/themes/".$pageTools->getTheme("admin")."/templates/corePage.inc.php");
+  $page->render("corePage.inc.php");
 
 ?>

@@ -43,8 +43,13 @@
       </div>
 			
       <div id="links">
-			
-        <?php require_once(FULL_PATH."/admin/includes/adminLinks.inc.php"); ?>
+
+        <div id='mainLink'>
+          <a class='mainLink' href='../index.php'>Homepage</a>
+        </div>
+        <div id='mainLink'>
+          <a class='mainLink' href='login.php'>Login</a>
+        </div>			
 
 			</div>
 			

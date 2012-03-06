@@ -20,7 +20,7 @@
 	</tr>
 	<tr <?php if ($switch==0) { echo($background); $switch=1;} else {$switch=0;} ?>>
 		<td>Insert Image</td>
-		<td>[img_{left/right/center} size={size in pixels}] <?php echo($adminTools->renderImageList()); ?> [/img]</td>
+		<td>[img_{left/right/center} size={size in pixels}] <?php echo($_adminTools->renderImageList()); ?> [/img]</td>
 		<td><a href='#' title='Choose for your image to be positioned either left/right or centered and the size you wish it to be in pixels. Full page width is 948. The dropdown box is to remind you of the filenames of images you have uploaded and where the filename should be. Note this IS case sensitive.'>?</a></td>
 	</tr>
 	<tr <?php if ($switch==0) { echo($background); $switch=1;} else {$switch=0;} ?>>

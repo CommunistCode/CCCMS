@@ -1,6 +1,6 @@
 <?php
 
-  require_once($fullPath."/classes/pdoConn.class.php");
+  require_once(FULL_PATH."/global/classes/pdoConn.class.php");
 
   class pageTools {
 
@@ -12,6 +12,39 @@
 
     }
 
+    public function getDynamicContent() {
+
+      if (isset($_GET['page'])) {
+
+        if ($this->checkPageExists($_GET['page']) == 0) {
+
+          $page = $_GET['page'];
+
+        }
+
+      } 
+
+      if (!isset($page)) {
+
+        $page = $this->getStartingPage();
+
+      }
+
+      define('PAGE_ID',$page);
+
+      $field = array("title","text","linkName","specialInclude");
+      $table = "dContent";
+
+      $where[0]['column'] = "dContentID";
+      $where[0]['operator'] = "=";
+      $where[0]['value'] = PAGE_ID;
+
+      $result = $this->pdoConn->select($field,$table,$where);
+    
+      return $result[0];
+     
+
+    }
     
     public function checkPageExists($page) {
 
@@ -65,12 +98,12 @@
     
     }
 
-    public function render($template, $params) {
+    public function render($template, $params, $prefix="") {
       
       ob_start();
    
-      extract($params,EXTR_PREFIX_ALL,"arg"); 
-
+      extract($params,EXTR_PREFIX_ALL,$prefix); 
+      
       include($template);
         
       $return = ob_get_contents();
@@ -99,21 +132,6 @@
 
     }
   
-    public function getDynamicContent($pageID) {
-    
-      $field = array("title","text","linkName","specialInclude");
-      $table = "dContent";
-
-      $where[0]['column'] = "dContentID";
-      $where[0]['operator'] = "=";
-      $where[0]['value'] = $pageID;
-
-      $result = $this->pdoConn->select($field,$table,$where);
-    
-      return $result[0];
-    
-    }
-  
     public function getStaticContent($id) {
   
       $field = "value";
@@ -136,7 +154,7 @@
 
       $result = $this->pdoConn->select($fields,$table);
     
-      return $result[0];
+      return $result;
     
     }
   

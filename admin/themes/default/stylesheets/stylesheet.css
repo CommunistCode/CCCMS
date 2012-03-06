@@ -37,7 +37,8 @@ td {
 	margin-top: auto;
 	margin-bottom: auto;
 	background:url('../../../images/faux.jpg') repeat 0 0;
-	width: 1000px;
+	width: 910px;
+  border: 1px solid grey;
 }
 
 #title {
@@ -99,9 +100,8 @@ a.sublink:hover {
 
 #body {
 	float: right;
-	width: 760px;
-	margin: 0 0 0 0px;
-	padding: 25 0 0 0px;
+	margin: 20px 20px 0 0px;
+	width: 670px;
 }
 
 #footer {
