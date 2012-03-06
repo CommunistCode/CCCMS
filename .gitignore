@@ -1,8 +1,10 @@
+global/config/config.php
 favicon.ico
 *.swp
 userImages/*
 membership/
 auction/
+download/
 blog/
 wiki/
-/base/config/config.php
+

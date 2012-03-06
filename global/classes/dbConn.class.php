@@ -10,7 +10,7 @@ class dbConn {
 	//Constructor
 	function __construct() {
 			
-		$this->mysqli = new mysqli('localhost', $GLOBALS['DB_USER'], $GLOBALS['DB_PASS'], $GLOBALS['DB_NAME']);
+		$this->mysqli = new mysqli('localhost', DB_USER, DB_PASS, DB_NAME);
 				
 	}
 

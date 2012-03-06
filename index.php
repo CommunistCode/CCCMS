@@ -5,7 +5,7 @@
   $dynamicPage = $pageTools->getDynamicContent();
 
   $page->set("title",$dynamicPage['title']);
-  $page->addContent("<div class='matchTags'>".$pageTools->matchTags($dynamicPage['text'])."</div>");
+  $page->addContent("<div id='matchTags'>".$pageTools->matchTags($dynamicPage['text'])."</div>");
   $page->render("corePage.inc.php");
   
 ?>

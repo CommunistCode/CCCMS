@@ -12,7 +12,7 @@
 
     }
 
-    public function getDynamicContent() {
+    public function getDynamicContent($page=NULL) {
 
       if (isset($_GET['page'])) {
 
@@ -77,7 +77,7 @@
       $where[0]['value'] = $link;
       
       $result = $this->pdoConn->select($field,$table,$where);
-
+      
       return $result[0]['dContentID'];
 
     }
