@@ -1,5 +1,11 @@
 <?php
 
+  if (!defined("PAGE_ID")) {
+
+    define("PAGE_ID",-1);
+
+  }
+
 	$result = $_pageTools->getPageLinks();
 	
   foreach($result as $row) {
