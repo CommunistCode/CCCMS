@@ -1,1 +1,1 @@
-<img src='<?php echo(DIRECTORY_PATH); ?>/themes/default/images/communistCodeOriginal.png' />
+<img src='<?php echo(DIRECTORY_PATH); ?>/base/themes/default/images/communistCodeOriginal.png' />
