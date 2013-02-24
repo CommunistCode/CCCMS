@@ -156,16 +156,27 @@
 	}
 	
 	public function updateDynamic($id, $title, $text, $linkName) {
-		
-		$db = new dbConn();
+	
+    $table = "dContent";
 
-		$text = addslashes(htmlentities($text));	
+    $set[0]['column'] = "title";
+    $set[0]['value'] = $title;
 
-		if ($db->update("dContent","title='".$title."', text='".$text."', linkName='".$linkName."'","dContentID='".$id."'",0)) {
-			
+    $set[1]['column'] = "text";
+    $set[1]['value'] = $text;
+  
+    $set[2]['column'] = "linkName";
+    $set[2]['value'] = $linkName;
+  
+    $where[0]['column'] = "dContentID";
+    $where[0]['value'] = $id;
+	
+	  if ($this->pdoConn->update($table, $set, $where) == SUCCESS)
+    {
 			return true;
 		}
-		else {
+		else
+    {
 			return false;
 		}
 	}
