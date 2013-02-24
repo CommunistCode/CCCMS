@@ -179,11 +179,11 @@
     
       $patterns[1] = "/\[b\](.*?)\[\/b\]/is";  //Bold
       $patterns[2] = "/\[i\](.*?)\[\/i\]/is"; //Italics
-      $patterns[3] = "/\[url\=(.*)\](.*)\[\/url\]/i"; //Link
-      $patterns[4] = "/\[img_left size\=(.*)\](.*)\[\/img\]/i"; //ImgLeft
-      $patterns[5] = "/\[img_right size\=(.*)\](.*)\[\/img\]/i"; //ImgRight
-      $patterns[6] = "/\[img_center size\=(.*)\](.*)\[\/img\]/i"; //ImgCentre
-      $patterns[7] = "/\[colour\=(.*)\](.*)\[\/colour\]/is"; //Link
+      $patterns[3] = "/\[url\=(.*?)\](.*?)\[\/url\]/is"; //Link
+      $patterns[4] = "/\[img_left size\=(.*?)\](.*?)\[\/img\]/is"; //ImgLeft
+      $patterns[5] = "/\[img_right size\=(.*?)\](.*?)\[\/img\]/is"; //ImgRight
+      $patterns[6] = "/\[img_center size\=(.*?)\](.*?)\[\/img\]/is"; //ImgCentre
+      $patterns[7] = "/\[colour\=(.*?)\](.*?)\[\/colour\]/is"; //Link
       $patterns[8] = "/\[header\](.*?)\[\/header\]/is"; //Heading 
       $patterns[9] = "/\[big_header\](.*?)\[\/big_header\]/is"; //Big heading
       $patterns[10] = "/\[small_header\](.*?)\[\/small_header\]/is";  //Small heading
