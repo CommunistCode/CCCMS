@@ -1,6 +1,6 @@
 <?php 
 
-	require_once('../config/config.php'); 	
+	require_once('../global/config/config.php'); 	
 	
 ?>
 
@@ -13,13 +13,13 @@
 
 		<?php
 
-			require_once($fullPath."/admin/includes/dbCreate.inc.php");
+			require_once(FULL_PATH."/admin/includes/dbCreate.inc.php");
 
 			initial_create_db();
 		
-			require_once($fullPath."/classes/initialCreate.class.php");
-			require_once($fullPath."/admin/classes/initialCreate.class.php");
-			require_once($fullPath."/admin/classes/adminTools.class.php");
+			require_once(FULL_PATH."/base/classes/initialCreate.class.php");
+			require_once(FULL_PATH."/admin/classes/initialCreate.class.php");
+			require_once(FULL_PATH."/admin/classes/adminTools.class.php");
 
 			$admin = new adminTools();
 			$installAdmin = new initialCreateAdmin();
@@ -30,7 +30,6 @@
 			$installAdmin->initial_populate();
 
 			$installContent->initial_create_tables();
-			$installContent->initial_populate();
 
 			echo ($admin->createAdmin("admin"));
 

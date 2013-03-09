@@ -3,56 +3,71 @@
 //Initial create admin and database
 //initialCreate.class.php
 
-require_once($fullPath."/classes/dbConn.class.php");
+require_once(FULL_PATH."/global/classes/dbTools.class.php");
 
 class initialCreateAdmin {
 	
 	function initial_create_tables() {
 
-		$db = new dbConn();
+		$dbTools = new dbTools();
 
-		$query = "
+		$i = 0;
 
- 	    CREATE TABLE adminUsers (
-   	  adminID int NOT NULL AUTO_INCREMENT,
-     	adminUser text,
-      adminPass text,
- 	    PRIMARY KEY(adminID)
-   	  ); ";
+		$tableName = "adminUsers";
+		
+		$tableDef[$i]['name'] = "adminID";
+		$tableDef[$i]['definition'] = "INT NOT NULL AUTO_INCREMENT";
+		
+		$tableDef[++$i]['name'] = "adminUser";
+		$tableDef[$i]['definition'] = "TEXT";
+		
+		$tableDef[++$i]['name'] = "adminPass";
+		$tableDef[$i]['definition'] = "TEXT";
+		
+		$primaryKey = "adminID";
+		
+		$dbTools->newTable($tableName, $tableDef, $primaryKey);
 
-		if ($db->mysqli->query($query)) {
+		unset($tableDef);
+		
+		$i = 0;
+		
+		$tableName = "adminContent";
+		
+		$tableDef[$i]['name'] = "aContentID";
+		$tableDef[$i]['definition'] = "INT NOT NULL AUTO_INCREMENT";
+		
+		$tableDef[++$i]['name'] = "name";
+		$tableDef[$i]['definition'] = "TEXT";
+		
+		$tableDef[++$i]['name'] = "link";
+		$tableDef[$i]['definition'] = "TEXT";
+		
+		$tableDef[++$i]['name'] = "category";
+		$tableDef[$i]['definition'] = "TEXT";
+		
+		$primaryKey = "aContentID";
+		
+		$dbTools->newTable($tableName, $tableDef, $primaryKey);
+		
+		unset($tableDef);
+		
+		$i = 0;
 
- 		 echo("admin created<br />");
+		$tableName = "version";
+		
+		$tableDef[$i]['name'] = "module";
+		$tableDef[$i]['definition'] = "VARCHAR(20) UNIQUE";
+		
+		$tableDef[++$i]['name'] = "version";
+		$tableDef[$i]['definition'] = "TEXT";
+		
+		$tableDef[++$i]['name'] = "theme";
+		$tableDef[$i]['definition'] = "TEXT";
+		
+		$dbTools->newTable($tableName, $tableDef, NULL);
 
- 		}
-
-    else {
-
- 	    echo($db->mysqli->error . "<br \>");
-
-   	}
-
-		$query = "
-
-			CREATE TABLE adminContent (
-			aContentID int NOT NULL AUTO_INCREMENT,
-			name text,
-			link text,
-			category text,
-			PRIMARY KEY(aContentID)
-			); ";
-
-		if ($db->mysqli->query($query)) {
-
-			echo("adminContent created <br />");
-
-		}
-
-		else {
-
-			echo($db->mysqli->error . "<br />");
-
-		}
+		unset($tableDef);
 
  	}
 
@@ -61,6 +76,7 @@ class initialCreateAdmin {
 		$db = new dbConn();
 		
 		$db->insert("version","module,version,theme","'base','1.0.0','default'");
+		$db->insert("version","module,version,theme","'admin','1.0.0','default'");
 		
 		$query = "SELECT * FROM adminContent WHERE name = 'Manage Pages'";
 

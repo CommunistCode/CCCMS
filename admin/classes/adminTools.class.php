@@ -1,6 +1,7 @@
 <?php
 
-  require_once($fullPath.'/admin/classes/admin.class.php');
+  require_once(FULL_PATH.'/admin/classes/admin.class.php');
+  require_once(FULL_PATH.'/global/classes/pdoConn.class.php');
 
   class adminTools {
 
@@ -127,13 +128,21 @@
 	
 	public function createPage($title,$text,$linkName) {
 		
-		$db = new dbConn();
+		$i = 0;
 		
-		$values  = "'".$title."',";
-		$values .= "'".$text."',";
-		$values .= "'".$linkName."'";
+		$table = "dContent";
 		
-		if($db->insert("dContent","title,text,linkName",$values, 0)) {
+		$insertArray[$i]['field'] = "title";
+		$insertArray[$i]['value'] = $title;
+		
+		$insertArray[++$i]['field'] = "text";
+		$insertArray[$i]['value'] = $text;
+		
+		$insertArray[++$i]['field'] = "linkName";
+		$insertArray[$i]['value'] = $linkName;
+
+		
+		if(!$this->pdoConn->insert($table, $insertArray)) {
 			
 			return "<p>Page was created sucessfully!</p>";
 		}
@@ -309,7 +318,7 @@
 	
 	public function uploadImage($file) {
 		
-		$uploadDir = $GLOBALS['fullPath']."/userImages/";
+		$uploadDir = $GLOBALS['fullPath']."/uploadedImages/";
 		$uploadFile = $uploadDir . basename($file['name']);
 
 		if (move_uploaded_file($file['tmp_name'], $uploadFile)) {
@@ -322,7 +331,7 @@
 	
 	public function renderImageList() {
 		
-		if ($handle = opendir($GLOBALS['fullPath'].'/userImages')) {
+		if ($handle = opendir(FULL_PATH.'/uploadedImages')) {
 			
 			$render = "<select name='value' id='value'>\n";
 			
@@ -345,7 +354,7 @@
 	
 	public function deleteImage($image) {
 		
-		if (unlink($GLOBALS['fullPath'].'/userImages/'.$image)) {
+		if (unlink($GLOBALS['fullPath'].'/uploadedImages/'.$image)) {
 			return "<p style='color:green;'>Image Deleted!</p>";
 		}
 		else {

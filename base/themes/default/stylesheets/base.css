@@ -52,6 +52,16 @@ a {
   padding: 3px 0px 3px 0px;
 }
 
+body h1 {
+  border-bottom: 2px solid #cc0000;
+  font-size: 25px;
+  line-height: 30px;
+  margin: 0px 0px 10px 0px;
+  text-align: left;
+}
+
+/* Base specific themes */
+
 #mainContainer {
   position: relative;
   width: 910px;
@@ -112,13 +122,6 @@ a {
   line-height: 150%;
   text-align: justify;
   margin: 0px 0px 20px 0px;
-}
-
-#body h1 {
-  border-bottom: 2px solid #cc0000;
-  font-size: 25px;
-  line-height: 30px;
-  margin: 0px 0px 10px 0px;
 }
 
 #body.normalBody {

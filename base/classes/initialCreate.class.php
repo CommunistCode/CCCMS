@@ -3,7 +3,7 @@
 //Create the initial tables and content
 //initialCreate.class.php
 
-require_once($fullPath."/classes/dbConn.class.php");
+require_once(FULL_PATH."/global/classes/dbConn.class.php");
 
 class initialCreateContent {
 	
@@ -12,26 +12,6 @@ class initialCreateContent {
 		$db = new dbConn();
 
 		echo("<b>Creating tables:</b><br />");
-
-		$query = "
-
-			CREATE TABLE version (
-					module text,
-					version text,
-					theme text
-			); ";
-
-		if ($db->mysqli->query($query)) {
-
-			echo("version table created<br />");
-
-		}
-
-		else {
-
-			echo($db->mysqli->error . "<br />");
-
-		}
 
     $query = "
 
@@ -81,39 +61,6 @@ class initialCreateContent {
 		}
 
  	}
-
-	function initial_populate() {
-
-		$db = new dbConn();
-
-		if ($db->checkExists("version","module","base")) {
-
-			echo("version already populated with base module<br />");
-
-		}
-
-		else {
-
-			$query = "
-
-				INSERT INTO version (
-					module,
-					version
-				) values (
-					'base',
-					'1.0.0',
-					'default'
-				); ";
-
-			if ($db->mysqli->query($query)) {
-
-				echo("version populated<br />");
-
-			}
-
-		}
-
-	}
 	
 }
 

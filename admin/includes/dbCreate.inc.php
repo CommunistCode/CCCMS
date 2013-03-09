@@ -4,11 +4,11 @@
 
 		$db = new mysqli();
 
-		$db->real_connect('localhost', $GLOBALS['DB_USER'], $GLOBALS['DB_PASS']) or die($db->connect_error);
+		$db->real_connect('localhost', DB_USER, DB_PASS) or die($db->connect_error);
 
 		$query = "
 
-			CREATE DATABASE ".$GLOBALS['DB_NAME'].";
+			CREATE DATABASE ".DB_NAME.";
 
 		";
 

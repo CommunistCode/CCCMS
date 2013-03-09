@@ -119,6 +119,11 @@
 
       $result = $this->getPageLinks();
       
+      if (!$result)
+      {
+				die("You have yet to add a page");
+			}
+      
       $linkOrder = 0;
 
       do {
@@ -126,7 +131,12 @@
         $tempResult = array_shift($result);
         $linkOrder = $tempResult['linkOrder']; 
   
-      }  while ($linkOrder == 0); 
+      }  while ($linkOrder != 1 && $tempResult != NULL);
+      
+      if ($linkOrder != 1)
+      {
+				die("Pages added, but not yet made visible");
+			}
       
       return $tempResult['dContentID'];
 
@@ -193,9 +203,9 @@
       $replacements[1] = "<strong>$1</strong>";
       $replacements[2] = "<em>$1</em>";
       $replacements[3] = "<a href=\"$1\">$2</a>";
-      $replacements[4] = "<img class='imageLeft' style='width:$1px;' src='userImages/$2' />";
-      $replacements[5] = "<img class='imageRight' style='width:$1px;' src='userImages/$2' />";
-      $replacements[6] = "<img class='imageCentre' style='width:$1px;' src='userImages/$2' />";
+      $replacements[4] = "<img class='imageLeft' style='width:$1px;' src='uploadedImages/$2' />";
+      $replacements[5] = "<img class='imageRight' style='width:$1px;' src='uploadedImages/$2' />";
+      $replacements[6] = "<img class='imageCentre' style='width:$1px;' src='uploadedImages/$2' />";
       $replacements[7] = "<span style=\"color:$1;\">$2</span>";
       $replacements[8] = "<h2>$1</h2>";
       $replacements[9] = "<h1>$1</h1>";
